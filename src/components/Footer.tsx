@@ -29,7 +29,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className='grow-0'>
-            <Link href=''>
+            <Link href='https://www.facebook.com/profile.php?id=100081592810213'>
               <Facebook sx={{color: grey[900]}}/>              
             </Link>
           </div>
