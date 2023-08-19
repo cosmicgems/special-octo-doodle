@@ -66,11 +66,10 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
   }
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: {xs:345, sm:450} }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
           src={image}
           alt={`${title} home page screenshot`}
         />
@@ -110,11 +109,10 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
            
           }
           {isGif &&
-            <CardMedia
-            component="img"
-            src={gif}
-            alt={`${title} GIF video of website in action.`}
-            />
+                        <video autoPlay muted loop className="">
+                        <source src={gif} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
           }
 
 

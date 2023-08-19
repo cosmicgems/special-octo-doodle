@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
-
+import { StateContext } from '../../Context/StateContext';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -26,9 +26,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
         <CssBaseline />
       <ThemeProvider theme={lightTheme}>
+        <StateContext>
           <Layout>
             <Component {...pageProps} />
           </Layout>
+        </StateContext>
       </ThemeProvider>
     </CacheProvider>
   );
