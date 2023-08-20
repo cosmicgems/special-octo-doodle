@@ -5,17 +5,37 @@ import Button from '@mui/material/Button'
 import { motion } from "framer-motion"
 import { useStateContext } from '../../Context/StateContext'
 import { CardMedia, Typography } from '@mui/material'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { orange, red } from '@mui/material/colors'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const videoRef = useRef(null);
+
+  
   
   const [hovered, setHovered] = useState(false);
   const [color, setColor] = useState(false);
   
-  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();
+  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();useEffect(() => {
+    const video = videoRef.current;
+
+    if (video) {
+      const videoSource = isWorkHoriBg
+        ? '/backgrounds/horizontal_code.mp4'
+        : isWorkVertBg
+        ? '/backgrounds/vertical_code.mp4'
+        : isAboutHoriBg
+        ? '/backgrounds/horizontal_octopus.mp4'
+        : isAboutVertBg
+        ? '/backgrounds/vertical_octopus.mp4'
+        : '';
+
+      video.src = videoSource;
+      video.load(); // Preload the video data
+    }
+  }, [isWorkHoriBg, isWorkVertBg, isAboutHoriBg, isAboutVertBg]);
 
   
   const handleBackground = (theme:string) => {
@@ -60,7 +80,7 @@ export default function Home() {
     <div className="video-container">
 
       {hovered ?
-            <video autoPlay muted loop className="background-video ">
+            <video autoPlay muted loop className="background-video" ref={videoRef} preload="auto">
               <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isWorkVertBg ?  "/backgrounds/vertical_code.mp4" : isAboutHoriBg ?  "/backgrounds/horizontal_octopus.mp4" : isAboutVertBg ?  "/backgrounds/vertical_octopus.mp4" : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
             </video> : null
