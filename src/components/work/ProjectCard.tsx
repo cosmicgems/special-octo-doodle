@@ -99,7 +99,7 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
               {techStack.map((tech, i) => {
                 const {name, percentage, css} = tech;
                 return <Box key={i}>
-                      <Typography variant='p' component='div' className='font-bold' sx={css}>{name}</Typography>
+                      <Typography variant='body1' component='div' className='font-bold' sx={css}>{name}</Typography>
                   <Stack  sx={css}>
                       <CircularProgressWithLabel value={percentage} sx={css} />      
                   </Stack>
