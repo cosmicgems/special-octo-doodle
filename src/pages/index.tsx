@@ -80,8 +80,8 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:orange[700]}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>.
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:orange[900], textShadow: '2px 2px #fff'}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -92,8 +92,8 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:orange[700]}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>.
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:orange[900], textShadow: '2px 2px #fff'}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -104,8 +104,8 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[700]}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>.
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #000'}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -116,8 +116,8 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[700]}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>.
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #000'}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -129,7 +129,7 @@ export default function Home() {
               transition={{duration: 1}}
               >
           <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani'}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>.
+          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography> 
               </motion.div>: null
         }
@@ -143,7 +143,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:orange[500], fontFamily: 'rajdhani'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:orange[900], fontFamily: 'rajdhani', textShadow: '1px 1px #fff'}} component='div' className=' md:px-24 sm:text-center font-bold' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -155,7 +155,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:orange[500], fontFamily: 'rajdhani'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:orange[900], fontFamily: 'rajdhani', textShadow: '1px 1px #fff'}} component='div' className=' md:px-24 sm:text-center font-bold' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -167,7 +167,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #000'}} component='div' className=' md:px-24 sm:text-center' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -179,7 +179,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #000'}} component='div' className=' md:px-24 sm:text-center' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -197,7 +197,39 @@ export default function Home() {
         </motion.div> : null
       }
 
-      <motion.div 
+      {isWorkHoriBg && hovered ?
+        <motion.div 
+        className='flex flex-row items-center justify-center gap-3'
+        initial={{opacity:0, scale:.25}}
+        animate={{ opacity:1, scale: 1 }}
+        transition={{ ease: "easeOut", duration: .75, delay:1 }}
+        >
+        <motion.div
+         onHoverEnd={() => {setHovered(false); setColor(false)}}  
+        >
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
+                handleBackground('professional');
+                setHovered(true); setColor(true) // Set hover status to true
+              }}
+              variant='contained' sx={{fontFamily: 'rajdhani', bgcolor: orange[900]}}>
+                My Work
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+           onHoverEnd={() => {setHovered(false); setColor(false)}}
+        >
+          <Link href="/about"><Button onMouseEnter={() => {
+                handleBackground('personal');
+                setHovered(true); setColor(true) // Set hover status to true
+              }} variant='outlined' sx={{fontFamily: 'kodchasan', borderColor: orange[900], color: orange[900]}}>About Me</Button></Link>
+        </motion.div>
+        </motion.div> : null
+
+      }
+      {isWorkVertBg && hovered ?
+              <motion.div 
       className='flex flex-row items-center justify-center gap-3'
       initial={{opacity:0, scale:.25}}
       animate={{ opacity:1, scale: 1 }}
@@ -206,11 +238,108 @@ export default function Home() {
         <motion.div
          onHoverEnd={() => {setHovered(false); setColor(false)}}  
         >
-          <Link href="/work"><Button  onMouseEnter={() => {
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
                 handleBackground('professional');
                 setHovered(true); setColor(true) // Set hover status to true
               }}
-              variant='contained' sx={{fontFamily: 'rajdhani'}}>My Work</Button></Link>
+              variant='contained' sx={{fontFamily: 'rajdhani', bgcolor: orange[900]}}>
+                My Work
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+           onHoverEnd={() => {setHovered(false); setColor(false)}}
+        >
+          <Link href="/about"><Button onMouseEnter={() => {
+                handleBackground('personal');
+                setHovered(true); setColor(true) // Set hover status to true
+              }} variant='outlined' sx={{fontFamily: 'kodchasan', borderColor: orange[900], color: orange[900]}}>About Me</Button></Link>
+        </motion.div>
+      </motion.div> : null
+
+      }
+      {isAboutHoriBg && hovered ?
+              <motion.div 
+      className='flex flex-row items-center justify-center gap-3'
+      initial={{opacity:0, scale:.25}}
+      animate={{ opacity:1, scale: 1 }}
+      transition={{ ease: "easeOut", duration: .75, delay:1 }}
+      >
+        <motion.div
+         onHoverEnd={() => {setHovered(false); setColor(false)}}  
+        >
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
+                handleBackground('professional');
+                setHovered(true); setColor(true) // Set hover status to true
+              }}
+              variant='contained' sx={{fontFamily: 'rajdhani', bgcolor: red[500]}}>
+                My Work
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+           onHoverEnd={() => {setHovered(false); setColor(false)}}
+        >
+          <Link href="/about"><Button onMouseEnter={() => {
+                handleBackground('personal');
+                setHovered(true); setColor(true) // Set hover status to true
+              }} variant='outlined' sx={{fontFamily: 'kodchasan', borderColor: red[500], color: red[500]}}>About Me</Button></Link>
+        </motion.div>
+      </motion.div> : null
+
+      }
+      {isAboutVertBg && hovered ?
+              <motion.div 
+      className='flex flex-row items-center justify-center gap-3'
+      initial={{opacity:0, scale:.25}}
+      animate={{ opacity:1, scale: 1 }}
+      transition={{ ease: "easeOut", duration: .75, delay:1 }}
+      >
+        <motion.div
+         onHoverEnd={() => {setHovered(false); setColor(false)}}  
+        >
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
+                handleBackground('professional');
+                setHovered(true); setColor(true) // Set hover status to true
+              }}
+              variant='contained' sx={{fontFamily: 'rajdhani', bgcolor: red[500]}}>
+                My Work
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+           onHoverEnd={() => {setHovered(false); setColor(false)}}
+        >
+          <Link href="/about"><Button onMouseEnter={() => {
+                handleBackground('personal');
+                setHovered(true); setColor(true) // Set hover status to true
+              }} variant='outlined' sx={{fontFamily: 'kodchasan', borderColor: red[500], color: red[500]}}>About Me</Button></Link>
+        </motion.div>
+      </motion.div> : null
+
+      }
+      {!color && !hovered ?
+              <motion.div 
+      className='flex flex-row items-center justify-center gap-3'
+      initial={{opacity:0, scale:.25}}
+      animate={{ opacity:1, scale: 1 }}
+      transition={{ ease: "easeOut", duration: .75, delay:1 }}
+      >
+        <motion.div
+         onHoverEnd={() => {setHovered(false); setColor(false)}}  
+        >
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
+                handleBackground('professional');
+                setHovered(true); setColor(true) // Set hover status to true
+              }}
+              variant='contained' sx={{fontFamily: 'rajdhani'}}>
+                My Work
+            </Button>
+          </Link>
         </motion.div>
         <motion.div
            onHoverEnd={() => {setHovered(false); setColor(false)}}
@@ -220,7 +349,10 @@ export default function Home() {
                 setHovered(true); setColor(true) // Set hover status to true
               }} variant='outlined' sx={{fontFamily: 'kodchasan'}}>About Me</Button></Link>
         </motion.div>
-      </motion.div>
+      </motion.div> : null
+
+      }
+
     </main>
     </>
   )

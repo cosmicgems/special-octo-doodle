@@ -4,15 +4,37 @@ import { motion } from "framer-motion"
 import { useState } from 'react'
 import { projects } from '../../assets/projects'
 import { useStateContext } from '../../../Context/StateContext'
+import { Typography } from '@mui/material'
+import { blue, grey } from '@mui/material/colors'
 
 const WorkPage = () => {
   
   const [hovered, setHovered] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
   const [color, setColor] = useState(false);
   
   const {   orientation, isPearlBox, setIsPearlBox, isCredit, setIsCredit, isCosmic, setIsCosmic, isWorkDefault, setIsWorkDefault} = useStateContext();
 
-  
+    
+  const handleBackground = (theme:string) => {
+    if(theme === 'Pearl Box'){
+      setIsPearlBox(true);
+      setIsCredit(false);
+      setIsCosmic(false);
+      setIsWorkDefault(false);
+    } else if(theme === 'Credit Zen'){
+      setIsCredit(true);
+      setIsPearlBox(false);
+      setIsCosmic(false);
+      setIsWorkDefault(false);
+    } else if (theme === 'Cosmic Gems') {
+      setIsCredit(false);
+      setIsPearlBox(false);
+      setIsCosmic(true);
+      setIsWorkDefault(false);
+    }
+  }
+
 
   return (
     <>
@@ -20,20 +42,50 @@ const WorkPage = () => {
 
       {hovered ?
             <video autoPlay muted loop className="background-video ">
-              <source src={`${isWorkDefault ? "" : isPearlBox ?  "/backgrounds/vertical_code.mp4" : isCredit ?  "/backgrounds/horizontal_octopus.mp4" : isCosmic ?  "/backgrounds/vertical_octopus.mp4" : "" }`} type="video/mp4" />
+              <source src={`${isWorkDefault ? "" : isPearlBox ?  "/backgrounds/work_page_pearl.mp4" : isCredit ?  "/backgrounds/work_page_credit.mp4" : isCosmic ?  "/backgrounds/work_page_cosmic.mp4" : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
             </video> : null
       }
 
     </div>
       <main className='flex flex-col gap-3 items-center justify-center mb-12' style={{fontFamily:'rajdhani'}}>
+        
+      {isPearlBox && hovered ?
         <motion.div 
         initial={{opacity:0, y:-100}}
         animate={{opacity:1, y:0}}
         transition={{duration: 0.75}}
         className=''>
-          <h1>My Work</h1>
-        </motion.div>
+          <Typography className='font-bold' variant="h1" component='div' sx={{color: grey[50], fontFamily: 'rajdhani', opacity: 0}}>My Work</Typography>
+        </motion.div> : null
+        }
+        {isCredit && hovered ?
+          <motion.div 
+          initial={{opacity:0, y:-100}}
+          animate={{opacity:1, y:0}}
+          transition={{duration: 0.75}}
+          className=''>
+            <Typography className='font-bold' variant="h1" component='div' sx={{color: grey[50], fontFamily: 'rajdhani', opacity: 0}}>My Work</Typography>
+          </motion.div> : null
+        }
+        {isCosmic && hovered ?
+          <motion.div 
+          initial={{opacity:0, y:-100}}
+          animate={{opacity:1, y:0}}
+          transition={{duration: 0.75}}
+          className=''>
+            <Typography className='font-bold' variant="h1" component='div'  sx={{color: blue[300], textShadow: '2px 2px #000', fontFamily: 'rajdhani', opacity: 0}}>My Work</Typography>
+          </motion.div> : null
+        }
+        {!color && !hovered ?
+          <motion.div 
+          initial={{opacity:0, y:-100}}
+          animate={{opacity:1, y:0}}
+          transition={{duration: 0.75}}
+          className=''>
+            <Typography className='font-bold' variant="h1" component='div'  sx={{fontFamily: 'rajdhani'}}>My Work</Typography>
+          </motion.div> : null
+        }
 
         <div className='sm:hidden'>
           {projects.map((project:any, i) => {
@@ -56,8 +108,20 @@ const WorkPage = () => {
               className='mb-3'
               key={project.id}
               initial={{opacity:0, scale:.25}}
-              animate={{ opacity:1, scale: 1 }}
-              transition={{ ease: "easeOut", duration: 1 }}
+              animate={{
+                opacity: hovered && hoveredProject === project.title ? 1 : 0.25,
+                scale:  1}}
+              transition={{ ease: "easeOut", duration: 1 }} 
+              onMouseEnter={() => {
+                handleBackground(project.title);
+                setHoveredProject(project.title);
+                setHovered(true); 
+                setColor(true);  
+              }}
+              onHoverEnd={() => {
+                setHovered(false); 
+                setColor(false); 
+                setHoveredProject(null);}}  
             >
               <ProjectCard project={project} />
             </motion.div>

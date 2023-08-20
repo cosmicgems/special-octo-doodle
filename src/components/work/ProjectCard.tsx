@@ -109,7 +109,9 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
            
           }
           {isGif &&
-                        <video autoPlay muted loop className="">
+                        <video autoPlay muted loop
+                        className="w-full h-auto" 
+                        style={{ maxWidth: "100%", height: "auto" }}>
                         <source src={gif} type="video/mp4" />
                         Your browser does not support the video tag.
                       </video>
