@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useState } from 'react'
 import { projects } from '../../assets/projects'
 import { useStateContext } from '../../../Context/StateContext'
-import { Typography } from '@mui/material'
+import { CardMedia, Typography } from '@mui/material'
 import { blue, grey } from '@mui/material/colors'
 
 const WorkPage = () => {
@@ -57,14 +57,14 @@ const WorkPage = () => {
               transition={{duration: 0.75}} className="overlay"></motion.div> 
               </>: null
       }
-      {vertical || horizontal && !hovered ?
+      { horizontal && !hovered ?
         <>
         <div className="video-container">
             <motion.video
               initial={{opacity:0}}
               animate={{opacity:1}}
               transition={{duration: 0.75}} autoPlay muted loop className="background-video ">
-              <source src={`${vertical ? "/backgrounds/vertical_code.mp4" : horizontal ? "/backgrounds/horizontal_code.mp4" : ""}`} type="video/mp4" />
+              <source src={`${ horizontal ? "/backgrounds/horizontal_code.mp4" : ""}`} type="video/mp4" />
               Your browser does not support the video tag.
             </motion.video>
               </div>
@@ -72,7 +72,20 @@ const WorkPage = () => {
               initial={{opacity:0}}
               animate={{opacity:1}}
               transition={{duration: 0.75}} className="overlay"></motion.div>
-               </>: null
+               </>:
+          vertical &&!hovered ? (
+            
+        <>
+        <CardMedia
+        component="div"
+        className="video-container"
+        image="/backgrounds/vertical_code.gif" />
+              <motion.div 
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration: 0.75}} className="overlay"></motion.div>
+              </>
+          ) : null
       }
 
    
