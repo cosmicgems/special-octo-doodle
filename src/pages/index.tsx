@@ -125,7 +125,7 @@ export default function Home() {
               </>  : null
       }
 
-      {hovered && vertical && !maliek ?
+      {hovered && vertical ?
         <>
         <CardMedia
         component="div"
@@ -281,7 +281,7 @@ export default function Home() {
 
 
 
-      {isWorkHoriBg || maliek && hovered ?
+      {isWorkHoriBg  && hovered ?
         <motion.div 
         className='mb-3 lg:px-24'
         initial={{opacity:0, y:-100}}
@@ -317,6 +317,18 @@ export default function Home() {
           </Typography>
         </motion.div> : null
       }
+      {maliek && hovered ?
+        <motion.div 
+        className='mb-3 lg:px-24'
+        initial={{opacity:0, y:-100}}
+        animate={{opacity:1, y:0}}
+        transition={{duration: 1, delay:0.25}}
+        >
+          <Typography variant='h5' sx={{color:grey[50], fontFamily: 'rajdhani',}} component='div' className=' md:px-24 sm:text-center' >
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          </Typography>
+        </motion.div> : null
+      }
       {isAboutVertBg && hovered ?
         <motion.div 
         className='mb-3 lg:px-24'
@@ -342,7 +354,7 @@ export default function Home() {
         </motion.div> : null
       }
 
-      {isWorkHoriBg || maliek && hovered ?
+      {isWorkHoriBg  && hovered ?
         <motion.div 
         className='flex flex-row items-center justify-center gap-3'
         initial={{opacity:0, scale:.25}}
@@ -467,11 +479,54 @@ export default function Home() {
       </motion.div> : null
 
       }
-      {!color && !hovered ?
+      {maliek && hovered ?
               <motion.div 
       className='flex flex-row items-center justify-center gap-3'
       initial={{opacity:0, scale:.25}}
       animate={{ opacity:1, scale: 1 }}
+      transition={{ ease: "easeOut", duration: .75, delay:1 }}
+      >
+        <motion.div
+         onHoverEnd={() => {setHovered(false); setColor(false)}}  
+        >
+          <Link href="/work">
+            <Button  onMouseEnter={() => {
+                handleBackground('professional');
+                setHovered(true); setColor(true) // Set hover status to true
+              }}
+              variant='contained' sx={{fontFamily: 'rajdhani', }}>
+                My Work
+            </Button>
+          </Link>
+        </motion.div>
+        <motion.div
+           onHoverEnd={() => {setHovered(false); setColor(false)}}
+        >
+          <Link href="/about"><Button onMouseEnter={() => {
+                handleBackground('personal');
+                setHovered(true); setColor(true) // Set hover status to true
+              }} variant='outlined' sx={{fontFamily: 'kodchasan', borderColor: grey[50], color: grey[50]}}>About Me</Button></Link>
+        </motion.div>
+      </motion.div> : null
+
+      }
+      {!color && !hovered ?
+      <>
+      <motion.div 
+    className='items-center justify-center gap-3'
+    initial={{opacity:0, scale:.25}}
+    animate={{ opacity:1, scale: [1] }}
+    transition={{ ease: "easeOut", duration: .75, delay:1 }}
+    >
+        <div className='w-full'>
+          <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
+            Hover or Tap&Hold, I&apos;m Interactive!
+          </Typography>
+        </div></motion.div>
+        <motion.div 
+      className='flex flex-row items-center justify-center gap-3'
+      initial={{opacity:0, scale:.25}}
+      animate={{ opacity:1, scale: [1, 1.5, 1, 1.5, 1] }}
       transition={{ ease: "easeOut", duration: .75, delay:1 }}
       >
         <motion.div
@@ -495,7 +550,8 @@ export default function Home() {
                 setHovered(true); setColor(true) // Set hover status to true
               }} variant='outlined' sx={{fontFamily: 'kodchasan'}}>About Me</Button></Link>
         </motion.div>
-      </motion.div> : null
+        </motion.div>       
+      </> : null
 
       }
 
