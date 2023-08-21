@@ -17,6 +17,7 @@ export const StateContext =({ children }) => {
     const [orientation, setOrientation] = useState(null);
     const [horizontal, setHorizontal] = useState(false);
     const [vertical, setVertical] = useState(false);
+    
   
 
 

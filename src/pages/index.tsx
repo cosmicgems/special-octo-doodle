@@ -7,8 +7,25 @@ import { useStateContext } from '../../Context/StateContext'
 import { CardMedia, Typography } from '@mui/material'
 import { useState, useEffect, useRef } from 'react'
 import { blue, grey, orange, red } from '@mui/material/colors'
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import { images } from '../assets/images'
 
 const inter = Inter({ subsets: ['latin'] })
+
+function shuffleArray(array) {
+  
+  const shuffledArray = [...array];
+  
+  // Fisher-Yates shuffle algorithm
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+
+  return shuffledArray;
+}
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -17,6 +34,7 @@ export default function Home() {
   
   const [hovered, setHovered] = useState(false);
   const [color, setColor] = useState(false);
+  const [maliek, setMaliek] =useState(false);
   
   const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation, horizontal, vertical} = useStateContext();
   
@@ -64,18 +82,29 @@ export default function Home() {
         setIsAboutVertBg(true);
         setIsWorkVertBg(false);
         setIsAboutHoriBg(false);
-      }
+      } 
+      }else if(theme === 'maliek'){
+        setIsWorkHoriBg(false);
+        setIsAboutVertBg(false);
+        setIsWorkVertBg(false);
+        setIsAboutHoriBg(false);
       }
     console.log(isWorkHoriBg);
     
   }
 
-  const handleMouseLeave = () => {
-    setIsAboutHoriBg(false);
-    setIsAboutVertBg(false);
-    setIsWorkHoriBg(false);
-    setIsWorkVertBg(false);
-  }
+
+  
+  const shuffledImages = shuffleArray(images);
+
+  // State to track the loaded state of each image
+  const [loadedImages, setLoadedImages] = useState([]);
+
+  // Function to mark an image as loaded
+  const handleImageLoad = (imageIndex) => {
+    setLoadedImages((prevLoadedImages) => [...prevLoadedImages, imageIndex]);
+  };
+
 
   return (
     <>
@@ -108,6 +137,59 @@ export default function Home() {
               transition={{duration: 0.75}} className="overlay"></motion.div>
               </>  : null
       }
+      {hovered && maliek ?
+      
+    <div className="video-container">
+        <Box sx={{ width: "100%", height: "100vh", }}>
+        <ImageList className='sm:hidden' variant="masonry" cols={4} gap={2}>
+          {shuffledImages.map((item, index) => (
+            <ImageListItem key={item.image}>
+            {/* Display low-quality image initially */}
+            <img
+              src={`${item.image}?w=100&fit=crop&auto=format`}  // Use a lower-quality image here
+              alt='Images of me and my family is a quilt'
+              style={{ filter: loadedImages.includes(index) ? 'none' : 'blur(20px)' }}
+            />
+
+            {/* Load high-quality image in the background */}
+            <img
+              src={`${item.image}?w=248&fit=crop&auto=format`}  // Use the high-quality image here
+              alt='Images of me and my family is a quilt'
+              style={{ display: 'none' }}
+              onLoad={() => handleImageLoad(index)}  // Mark the image as loaded
+            />
+            </ImageListItem>
+          ))}
+        </ImageList>
+          <ImageList className='hidden sm:block' variant="masonry" cols={12} gap={4}>
+            {shuffledImages.map((item, index) => (
+              <ImageListItem key={item.image}>
+                {/* Display low-quality image initially */}
+                <img
+                  src={`${item.image}?w=100&fit=crop&auto=format`}  // Use a lower-quality image here
+                  alt='Images of me and my family is a quilt'
+                  style={{ filter: loadedImages.includes(index) ? 'none' : 'blur(20px)' }}
+                />
+
+                {/* Load high-quality image in the background */}
+                <img
+                  src={`${item.image}?w=248&fit=crop&auto=format`}  // Use the high-quality image here
+                  alt='Images of me and my family is a quilt'
+                  style={{ display: 'none' }}
+                  onLoad={() => handleImageLoad(index)}  // Mark the image as loaded
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.75 }} 
+          className="overlay2"
+        ></motion.div>
+        </Box></div> : ''
+        
+      }
 
   
     <main
@@ -123,8 +205,12 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:blue[500], textShadow: '2px 2px #fff', fontSize: {xs: '4rem'}}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:blue[500], textShadow: '2px 2px #fff', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span 
+           onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
+                handleBackground('maliek');
+                setHovered(true); setMaliek(true)  // Set hover status to true
+              }}  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -135,8 +221,12 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:blue[500], textShadow: '2px 2px #fff', fontSize: {xs: '4rem'}}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:blue[500], textShadow: '2px 2px #fff', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span 
+           onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
+                handleBackground('maliek');
+                setHovered(true); setMaliek(true)  // Set hover status to true
+              }}  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -147,20 +237,28 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff', fontSize: {xs: '4rem'}}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span 
+           onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
+                handleBackground('maliek');
+                setHovered(true); setMaliek(true)  // Set hover status to true
+              }}  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
-        {isAboutVertBg && hovered ?
+        {isAboutVertBg || maliek && hovered ?
               <motion.div 
               className='mb-3 '
               initial={{opacity:0, y:-100, scale: .5}}
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff', fontSize: {xs: '4rem'}}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
+          Hello, I&apos;m <motion.span 
+           onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
+                handleBackground('maliek');
+                setHovered(true); setMaliek(true)  // Set hover status to true
+              }}  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
         }
@@ -172,14 +270,18 @@ export default function Home() {
               transition={{duration: 1}}
               >
           <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
-          Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
+          Hello, I&apos;m <motion.span 
+           onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
+                handleBackground('maliek');
+                setHovered(true); setMaliek(true)  // Set hover status to true
+              }} style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography> 
               </motion.div>: null
         }
 
 
 
-      {isWorkHoriBg && hovered ?
+      {isWorkHoriBg || maliek && hovered ?
         <motion.div 
         className='mb-3 lg:px-24'
         initial={{opacity:0, y:-100}}
@@ -240,7 +342,7 @@ export default function Home() {
         </motion.div> : null
       }
 
-      {isWorkHoriBg && hovered ?
+      {isWorkHoriBg || maliek && hovered ?
         <motion.div 
         className='flex flex-row items-center justify-center gap-3'
         initial={{opacity:0, scale:.25}}

@@ -148,14 +148,22 @@ const AboutPage = () => {
       ) : isPersonal && hovered ? ( 
         <Box sx={{ width: "100%", height: "100vh", }}>
         <ImageList className='sm:hidden' variant="masonry" cols={4} gap={2}>
-          {shuffledImages.map((item) => (
+          {shuffledImages.map((item, index) => (
             <ImageListItem key={item.image}>
-              <img
-                src={`${item.image}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt='Images of me and my family is a quilt'
-                loading="lazy"
-              />
+            {/* Display low-quality image initially */}
+            <img
+              src={`${item.image}?w=100&fit=crop&auto=format`}  // Use a lower-quality image here
+              alt='Images of me and my family is a quilt'
+              style={{ filter: loadedImages.includes(index) ? 'none' : 'blur(20px)' }}
+            />
+
+            {/* Load high-quality image in the background */}
+            <img
+              src={`${item.image}?w=248&fit=crop&auto=format`}  // Use the high-quality image here
+              alt='Images of me and my family is a quilt'
+              style={{ display: 'none' }}
+              onLoad={() => handleImageLoad(index)}  // Mark the image as loaded
+            />
             </ImageListItem>
           ))}
         </ImageList>
