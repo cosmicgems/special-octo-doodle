@@ -117,6 +117,15 @@ const AboutPage = () => {
 
   const shuffledImages = shuffleArray(images);
 
+  // State to track the loaded state of each image
+  const [loadedImages, setLoadedImages] = useState([]);
+
+  // Function to mark an image as loaded
+  const handleImageLoad = (imageIndex) => {
+    setLoadedImages((prevLoadedImages) => [...prevLoadedImages, imageIndex]);
+  };
+
+
   return (
     <>
     <div className="video-container">
@@ -149,13 +158,21 @@ const AboutPage = () => {
           ))}
         </ImageList>
           <ImageList className='hidden sm:block' variant="masonry" cols={12} gap={4}>
-            {shuffledImages.map((item) => (
+            {shuffledImages.map((item, index) => (
               <ImageListItem key={item.image}>
+                {/* Display low-quality image initially */}
                 <img
-                  src={`${item.image}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  src={`${item.image}?w=100&fit=crop&auto=format`}  // Use a lower-quality image here
                   alt='Images of me and my family is a quilt'
-                  loading="lazy"
+                  style={{ filter: loadedImages.includes(index) ? 'none' : 'blur(20px)' }}
+                />
+
+                {/* Load high-quality image in the background */}
+                <img
+                  src={`${item.image}?w=248&fit=crop&auto=format`}  // Use the high-quality image here
+                  alt='Images of me and my family is a quilt'
+                  style={{ display: 'none' }}
+                  onLoad={() => handleImageLoad(index)}  // Mark the image as loaded
                 />
               </ImageListItem>
             ))}

@@ -18,7 +18,7 @@ export default function Home() {
   const [hovered, setHovered] = useState(false);
   const [color, setColor] = useState(false);
   
-  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();
+  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation, horizontal, vertical} = useStateContext();
   
   useEffect(() => {
     const video = videoRef.current;
@@ -27,11 +27,11 @@ export default function Home() {
       const videoSource = isWorkHoriBg
         ? '/backgrounds/horizontal_code.mp4'
         : isWorkVertBg
-        ? '/backgrounds/vertical_code.mp4'
+        ? '/backgrounds/vertical_code.gif'
         : isAboutHoriBg
         ? '/backgrounds/horizontal_octopus.mp4'
         : isAboutVertBg
-        ? '/backgrounds/vertical_octopus.mp4'
+        ? '/backgrounds/vertical_octopus.gif'
         : '';
 
       video.src = videoSource;
@@ -79,23 +79,39 @@ export default function Home() {
 
   return (
     <>
-    <div className="video-container">
+    
 
-      {hovered ?
+      {hovered && horizontal ?
         <>
+        <div className="video-container">
             <video autoPlay muted loop className="background-video" ref={videoRef} preload="auto">
-              <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isWorkVertBg ?  "/backgrounds/vertical_code.mp4" : isAboutHoriBg ?  "/backgrounds/horizontal_octopus.mp4" : isAboutVertBg ?  "/backgrounds/vertical_octopus.mp4" : "" }`} type="video/mp4" />
+              <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4"  : isAboutHoriBg ?  "/backgrounds/horizontal_octopus.mp4"  : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
               <motion.div 
               initial={{opacity:0}}
               animate={{opacity:1}}
-              transition={{duration: 0.75}} className="overlay"></motion.div></>  : null
+              transition={{duration: 0.75}} className="overlay"></motion.div>
+              </div>
+              </>  : null
       }
 
-    </div>
+      {hovered && vertical ?
+        <>
+        <CardMedia
+        component="div"
+        className="video-container"
+        image={`${isWorkVertBg ? '/backgrounds/vertical_code.gif' : isAboutVertBg ? '/backgrounds/vertical_octopus.gif' : ''}`} />
+              <motion.div 
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration: 0.75}} className="overlay"></motion.div>
+              </>  : null
+      }
+
+  
     <main
-      className={`flex  flex-col items-center md:justify-center h-[80vh] sm:h-max  px-4 md:px-14 lg:px-24 lg:mt-24   ${inter.className}`}
+      className={`flex  flex-col items-center md:justify-center h-max mb-5  px-4 md:px-14 lg:px-24 lg:mt-24   ${inter.className}`}
       style={{fontFamily: 'rajdhani'}}
     >
 
@@ -155,7 +171,7 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 1}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '4rem'}}} className=' sm:text-center'>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
           Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography> 
               </motion.div>: null
