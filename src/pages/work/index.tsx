@@ -41,10 +41,15 @@ const WorkPage = () => {
     <div className="video-container">
 
       {hovered ?
+        <>
             <video autoPlay muted loop className="background-video ">
               <source src={`${isWorkDefault ? "" : isPearlBox ?  "/backgrounds/work_page_pearl.mp4" : isCredit ?  "/backgrounds/work_page_credit.mp4" : isCosmic ?  "/backgrounds/work_page_cosmic.mp4" : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
-            </video> : null
+            </video>
+              <motion.div 
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration: 0.75}} className="overlay"></motion.div> </>: null
       }
 
     </div>

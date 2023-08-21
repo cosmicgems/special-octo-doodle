@@ -18,7 +18,9 @@ export default function Home() {
   const [hovered, setHovered] = useState(false);
   const [color, setColor] = useState(false);
   
-  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();useEffect(() => {
+  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();
+  
+  useEffect(() => {
     const video = videoRef.current;
 
     if (video) {
@@ -80,10 +82,15 @@ export default function Home() {
     <div className="video-container">
 
       {hovered ?
+        <>
             <video autoPlay muted loop className="background-video" ref={videoRef} preload="auto">
               <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isWorkVertBg ?  "/backgrounds/vertical_code.mp4" : isAboutHoriBg ?  "/backgrounds/horizontal_octopus.mp4" : isAboutVertBg ?  "/backgrounds/vertical_octopus.mp4" : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
-            </video> : null
+            </video>
+              <motion.div 
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration: 0.75}} className="overlay"></motion.div></>  : null
       }
 
     </div>
@@ -124,7 +131,7 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #000'}} className=' sm:text-center'>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff'}} className=' sm:text-center'>
           Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
@@ -136,7 +143,7 @@ export default function Home() {
               animate={{opacity:1, y:0, scale: 1}}
               transition={{duration: 0.75}}
               >
-          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #000'}} className=' sm:text-center'>
+          <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', color:red[500], textShadow: '2px 2px #fff'}} className=' sm:text-center'>
           Hello, I&apos;m <motion.span  style={{fontFamily: 'kodchasan', fontWeight:700}}>Maliek Davis</motion.span>
           </Typography>
               </motion.div> : null
@@ -187,7 +194,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #000'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #fff'}} component='div' className=' md:px-24 sm:text-center' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -199,7 +206,7 @@ export default function Home() {
         animate={{opacity:1, y:0}}
         transition={{duration: 1, delay:0.25}}
         >
-          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #000'}} component='div' className=' md:px-24 sm:text-center' >
+          <Typography variant='h5' sx={{color:red[500], fontFamily: 'rajdhani', textShadow: '2px 2px #fff'}} component='div' className=' md:px-24 sm:text-center' >
           Explore my portfolio — a journey of a self-taught technologist passionate about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
@@ -222,7 +229,7 @@ export default function Home() {
         className='flex flex-row items-center justify-center gap-3'
         initial={{opacity:0, scale:.25}}
         animate={{ opacity:1, scale: 1 }}
-        transition={{ ease: "easeOut", duration: .75, delay:1 }}
+        transition={{ duration: .75, delay:1 }}
         >
         <motion.div
          onHoverEnd={() => {setHovered(false); setColor(false)}}  
