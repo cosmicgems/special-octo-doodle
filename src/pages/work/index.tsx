@@ -70,7 +70,7 @@ const WorkPage = () => {
       }
 
     </div>
-      <main className='flex flex-col gap-3 items-center justify-center mb-12' style={{fontFamily:'rajdhani'}}>
+      <main className='flex flex-col gap-3 items-center justify-center mb-12 sm:mb-6' style={{fontFamily:'rajdhani'}}>
         
       {isPearlBox && hovered ?
         <motion.div 

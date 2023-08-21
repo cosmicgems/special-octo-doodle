@@ -24,7 +24,7 @@ import { blue, grey } from '@mui/material/colors';
 import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 
-const drawerWidth = "96%";
+const drawerWidth = "75%";
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   open?: boolean;
