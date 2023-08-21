@@ -171,7 +171,7 @@ export default function Home() {
         transition={{duration: 1, delay:0.25}}
         >
           <Typography variant='h5' sx={{color:grey[50], fontFamily: 'rajdhani', }} component='div' className=' md:px-24 sm:text-center ' >
-          Explore my portfolio — a journey of a self-taught technologist <Typography variant='span' sx={{color:red[500]}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
       }
@@ -183,7 +183,7 @@ export default function Home() {
         transition={{duration: 1, delay:0.25}}
         >
           <Typography variant='h5' sx={{color:grey[50], fontFamily: 'rajdhani',}} component='div' className=' md:px-24 sm:text-center ' >
-          Explore my portfolio — a journey of a self-taught technologist <Typography variant='span' sx={{color:red[500]}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
       }
@@ -195,7 +195,7 @@ export default function Home() {
         transition={{duration: 1, delay:0.25}}
         >
           <Typography variant='h5' sx={{color:grey[50], fontFamily: 'rajdhani', }} component='div' className=' md:px-24 sm:text-center' >
-          Explore my portfolio — a journey of a self-taught technologist <Typography variant='span' sx={{color:red[500]}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
       }
@@ -207,7 +207,7 @@ export default function Home() {
         transition={{duration: 1, delay:0.25}}
         >
           <Typography variant='h5' sx={{color:grey[50], fontFamily: 'rajdhani',}} component='div' className=' md:px-24 sm:text-center' >
-          Explore my portfolio — a journey of a self-taught technologist <Typography variant='span' sx={{color:red[500]}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
       }
@@ -219,7 +219,7 @@ export default function Home() {
         transition={{duration: 1, delay:0.25}}
         >
           <Typography variant='h5' component='div' className=' md:px-24 sm:text-center' sx={{fontFamily: 'rajdhani'}} >
-          Explore my portfolio — a journey of a self-taught technologist <Typography variant='span' sx={{color:red[500]}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
+          Explore my portfolio — a journey of a self-taught technologist <Typography className='inline' variant='h5' sx={{color:red[500], fontFamily:'kodchasan'}}>passionate </Typography>about leveraging computer science to enhance lives through innovation.
           </Typography>
         </motion.div> : null
       }
