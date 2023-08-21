@@ -39,6 +39,10 @@ body{
   object-fit: cover;
 }
 
+.about-img{
+  z-index: -3;
+}
+
 .overlay {
   position: absolute;
   top: 0;

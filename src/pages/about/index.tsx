@@ -131,18 +131,20 @@ const AboutPage = () => {
     <div className="video-container">
 
     {hovered && isProfessional ? (
+      <>
       <div className="video-container">
         <video autoPlay muted loop className="background-video" ref={videoRef} preload="auto">
           <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isWorkVertBg ?  "/backgrounds/vertical_code.mp4" : isAboutHoriBg ?  "" : isAboutVertBg ?  "" : "" }`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+      </div>
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.75 }} 
           className="overlay"
         ></motion.div>
-      </div>
+      </>
       ) : isPersonal && hovered ? ( 
         <Box sx={{ width: "100%", height: "100vh", }}>
         <ImageList className='sm:hidden' variant="masonry" cols={4} gap={2}>
@@ -187,6 +189,7 @@ const AboutPage = () => {
       ) :  (
         <>
           <CardMedia
+          className='relative about-img'
             component="img"
             alt="Background Image"
             height="100%"

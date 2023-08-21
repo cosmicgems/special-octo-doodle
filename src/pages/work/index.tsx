@@ -38,10 +38,11 @@ const WorkPage = () => {
 
   return (
     <>
-    <div className="video-container">
+    
 
       {hovered ?
         <>
+        <div className="video-container">
             <motion.video
               initial={{opacity:0}}
               animate={{opacity:1}}
@@ -49,13 +50,16 @@ const WorkPage = () => {
               <source src={`${isWorkDefault ? "" : isPearlBox ?  "/backgrounds/work_page_pearl.mp4" : isCredit ?  "/backgrounds/work_page_credit.mp4" : isCosmic ?  "/backgrounds/work_page_cosmic.mp4" : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
             </motion.video>
+              </div>
               <motion.div 
               initial={{opacity:0}}
               animate={{opacity:1}}
-              transition={{duration: 0.75}} className="overlay"></motion.div> </>: null
+              transition={{duration: 0.75}} className="overlay"></motion.div> 
+              </>: null
       }
       {vertical || horizontal && !hovered ?
         <>
+        <div className="video-container">
             <motion.video
               initial={{opacity:0}}
               animate={{opacity:1}}
@@ -63,13 +67,15 @@ const WorkPage = () => {
               <source src={`${vertical ? "/backgrounds/vertical_code.mp4" : horizontal ? "/backgrounds/horizontal_code.mp4" : ""}`} type="video/mp4" />
               Your browser does not support the video tag.
             </motion.video>
+              </div>
               <motion.div 
               initial={{opacity:0}}
               animate={{opacity:1}}
-              transition={{duration: 0.75}} className="overlay"></motion.div> </>: null
+              transition={{duration: 0.75}} className="overlay"></motion.div>
+               </>: null
       }
 
-    </div>
+   
       <main className='flex flex-col gap-3 items-center justify-center mb-12 sm:mb-6' style={{fontFamily:'rajdhani'}}>
         
       {isPearlBox && hovered ?

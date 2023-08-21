@@ -88,11 +88,11 @@ export default function Home() {
               <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4"  : isAboutHoriBg ?  "/backgrounds/horizontal_octopus.mp4"  : "" }`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+              </div>
               <motion.div 
               initial={{opacity:0}}
               animate={{opacity:1}}
               transition={{duration: 0.75}} className="overlay"></motion.div>
-              </div>
               </>  : null
       }
 
