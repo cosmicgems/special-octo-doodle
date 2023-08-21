@@ -33,7 +33,7 @@ const AboutPage = () => {
   const [hovered, setHovered] = useState(false);
   const [color, setColor] = useState(false);
   
-  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();
+  const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, vertical, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation} = useStateContext();
   
   useEffect(() => {
     const video = videoRef.current;
@@ -42,7 +42,7 @@ const AboutPage = () => {
       const videoSource = isWorkHoriBg
         ? '/backgrounds/horizontal_code.mp4'
         : isWorkVertBg
-        ? '/backgrounds/vertical_code.mp4'
+        ? ''
         : isAboutHoriBg
         ? ''
         : isAboutVertBg
@@ -130,11 +130,11 @@ const AboutPage = () => {
     <>
     <div className="video-container">
 
-    {hovered && isProfessional ? (
+    {hovered && isProfessional && !vertical ? (
       <>
       <div className="video-container">
         <video autoPlay muted loop className="background-video" ref={videoRef} preload="auto">
-          <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isWorkVertBg ?  "/backgrounds/vertical_code.mp4" : isAboutHoriBg ?  "" : isAboutVertBg ?  "" : "" }`} type="video/mp4" />
+          <source src={`${isWorkHoriBg ? "/backgrounds/horizontal_code.mp4" : isAboutHoriBg ?  "" : isAboutVertBg ?  "" : "" }`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -145,7 +145,18 @@ const AboutPage = () => {
           className="overlay"
         ></motion.div>
       </>
-      ) : isPersonal && hovered ? ( 
+      ) : hovered && isProfessional && vertical ? (
+        <>
+        <CardMedia
+        component="div"
+        className="video-container"
+        image={`${isWorkVertBg ? '/backgrounds/vertical_code.gif' :  ''}`} />
+              <motion.div 
+              initial={{opacity:0}}
+              animate={{opacity:1}}
+              transition={{duration: 0.75}} className="overlay"></motion.div>
+              </>
+      ) :  isPersonal && hovered ? ( 
         <Box sx={{ width: "100%", height: "100vh", }}>
         <ImageList className='sm:hidden' variant="masonry" cols={4} gap={2}>
           {shuffledImages.map((item, index) => (
@@ -210,8 +221,8 @@ const AboutPage = () => {
             className="overlay"
           ></motion.div>  
         </>
-
       )}
+      {}
 
     </div>
       <div className={` ${ isProfessional ? "" : isPersonal ? "" : "mt-24" } `}>
