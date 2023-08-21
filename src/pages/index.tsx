@@ -125,7 +125,7 @@ export default function Home() {
               </>  : null
       }
 
-      {hovered && vertical ?
+      {hovered && vertical && !maliek ?
         <>
         <CardMedia
         component="div"
