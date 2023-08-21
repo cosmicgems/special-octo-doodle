@@ -136,7 +136,19 @@ const AboutPage = () => {
       </div>
       ) : isPersonal && hovered ? ( 
         <Box sx={{ width: "100%", height: "100vh", }}>
-          <ImageList variant="masonry" cols={14} gap={4}>
+        <ImageList className='sm:hidden' variant="masonry" cols={4} gap={2}>
+          {shuffledImages.map((item) => (
+            <ImageListItem key={item.image}>
+              <img
+                src={`${item.image}?w=248&fit=crop&auto=format`}
+                srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt='Images of me and my family is a quilt'
+                loading="lazy"
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+          <ImageList className='hidden sm:block' variant="masonry" cols={12} gap={4}>
             {shuffledImages.map((item) => (
               <ImageListItem key={item.image}>
                 <img
@@ -180,7 +192,8 @@ const AboutPage = () => {
           initial={{opacity:0, y:-100}}
           animate={{opacity:1, y:0}}
           transition={{duration: 0.75}}>
-            <Typography variant='h1' component='div'  sx={{fontFamily: `${isPersonal ? "kodchasan" : "rajdhani"}`, color:grey[100]}}>About<span style={{fontFamily:'kodchasan'}}> Me</span></Typography>
+            <Typography className='hidden sm:inline' variant='h1' component='div'  sx={{fontFamily: `${isPersonal ? "kodchasan" : "rajdhani"}`, color:grey[100], fontSize:{xs:'4rem'}}}>About<span style={{fontFamily:'kodchasan'}}> Me</span></Typography>
+            <Typography className=' sm:hidden' variant='h2' component='div'  sx={{fontFamily: `${isPersonal ? "kodchasan" : "rajdhani"}`, color:grey[100], fontSize:{xs:'4rem'}}}>About<span style={{fontFamily:'kodchasan'}}> Me</span></Typography>
           </motion.div>
           <div className=''>
             {!isProfessional && !isPersonal &&
@@ -204,11 +217,11 @@ const AboutPage = () => {
                 </motion.div>
 
                 <motion.div
-                className='grow'
+                className='grow h-[30vh] overflow-y-auto'
                 initial={{opacity:0, y:-100}}
                 animate={{opacity:1, y:0}}
                 transition={{duration: 0.75, delay: 0.75}}>
-                <Typography sx={{fontFamily: 'rajdhani', color:grey[100], fontSize: '1.25rem', textShadow: '1px 1px #000'}} variant='body1' component='div'>With a foundation in Automotive Program Management, I&apos;ve championed the orchestration of multi-million-dollar programs for industry titans like Ford, GM, and FCA. My proficiency in program management, change management, and system optimization has been honed through navigating the intricacies of the automotive landscape.
+                <Typography sx={{fontFamily: 'rajdhani', color:grey[100], fontSize:{ xs: '.75rem' ,sm:'1.25rem'}, textShadow: '1px 1px #000'}} variant='body1' component='div'>With a foundation in Automotive Program Management, I&apos;ve championed the orchestration of multi-million-dollar programs for industry titans like Ford, GM, and FCA. My proficiency in program management, change management, and system optimization has been honed through navigating the intricacies of the automotive landscape.
                   <br/> <br/>
                 However, my journey took an exciting turn when I encountered technological bottlenecks within processes and systems. The frustration of being hindered by limitations in technology and corporate processes became the spark that ignited my journey into the world of software engineering.
                 <br/> <br/>
@@ -226,13 +239,14 @@ const AboutPage = () => {
               initial={{opacity:0, y:-100}}
               animate={{opacity:1, y:0}}
               transition={{duration: 0.75}}>
-                <Typography sx={{fontFamily: 'kodchasan', color:grey[100]}} variant='h6' className='mb-3 text-center' component='div'>A Lifelong Learner, Problem Solver, and Quantum Enthusiast</Typography>
+                <Typography sx={{fontFamily: 'kodchasan', color:grey[100], fontSize: {xs:'1rem'}}} variant='h6' className='mb-3 text-center' component='div'>A Lifelong Learner, Problem Solver, and Quantum Enthusiast</Typography>
               </motion.div>
                 <motion.div
+                className='grow h-[30vh] overflow-y-auto'
                 initial={{opacity:0, y:-100}}
                 animate={{opacity:1, y:0}}
                 transition={{duration: 0.75, delay: 0.75}}>
-                <Typography sx={{fontFamily: 'Kodchasan', color:grey[100], textShadow: '1px 1px #000', textAlign: {sm: 'center'}}} variant='body1' component='div'>
+                <Typography sx={{fontFamily: 'Kodchasan', color:grey[100], fontSize:{ xs: '.75rem' ,sm:'1.25rem'}, textShadow: '1px 1px #000', textAlign: {sm: 'center'}}} variant='body1' component='div'>
                 Greetings! I&apos;m a perpetual seeker of wisdom, and surrounding myself by brilliance. Curiosity is my compass, guiding me to the unknown.
                 <br/><br/>
                 With an unquenchable thirst for knowledge, I gravitate towards the best minds. I believe growth springs from questions, sparking understanding. Engaging with exceptional thinkers fuels my curiosity and drives me to transcend limits.
@@ -261,7 +275,7 @@ const AboutPage = () => {
             >
             <Button className={`${isOneLine ? "hidden" : "" }`} onClick={()=>{handleOneLiner(); handleBackground('one liner'); setHovered(false);}} sx={{fontFamily: 'rajdhani'}} variant='contained'>One Line</Button>
             <Button className={`${isProfessional ? "hidden" : "" }`} onClick={()=>{handleProfessional(); handleBackground('professional'); setHovered(true)}} sx={{fontFamily: 'rajdhani'}} variant='contained'>Professional</Button>
-            <Button className={`${isPersonal ? "hidden" : "" }`} onClick={()=>{handlePersonal(); handleBackground('personal'); console.log(isPersonal); setHovered(true);}} sx={{fontFamily: 'kodchasan'}} variant='outlined'>Personal</Button>
+            <Button className={`${isPersonal ? "hidden" : "" }`} onClick={()=>{handlePersonal(); handleBackground('personal'); console.log(isPersonal); setHovered(true);}} sx={{fontFamily: 'kodchasan', borderColor:grey[50], color:grey[50]}} variant='outlined'>Personal</Button>
           </motion.div>
 
         </div>      

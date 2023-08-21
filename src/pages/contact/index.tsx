@@ -20,7 +20,7 @@ const ContactPage = () => {
         initial={{opacity:0, y:-100}}
         animate={{opacity:1, y:0}}
         transition={{duration: 0.75}}>
-          <h1  style={{fontFamily:  "rajdhani"}}>Let&apos;s<span style={{fontFamily:'kodchasan'}}> Connect</span></h1>
+          <Typography variant='h1' component='div'  sx={{fontFamily:  "rajdhani", fontSize: {xs:'3rem'}}}>Let&apos;s<span style={{fontFamily:'kodchasan'}}> Connect</span></Typography>
         </motion.div>
         
         <div >

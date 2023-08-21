@@ -15,6 +15,8 @@ export const StateContext =({ children }) => {
     const [isCosmic, setIsCosmic] = useState(false);
     const [isWorkDefault, setIsWorkDefault] = useState(false);
     const [orientation, setOrientation] = useState(null);
+    const [horizontal, setHorizontal] = useState(false);
+    const [vertical, setVertical] = useState(false);
   
 
 
@@ -23,8 +25,12 @@ export const StateContext =({ children }) => {
       function updateOrientation() {
         if (window.innerWidth > window.innerHeight) {
           setOrientation('horizontal');
+          setHorizontal(true);
+          setVertical(false);
         } else {
           setOrientation('vertical');
+          setHorizontal(false);
+          setVertical(true);
         }
       }
   
@@ -44,7 +50,7 @@ export const StateContext =({ children }) => {
 
 
     return (
-        <Context.Provider value={{isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,  orientation, isPearlBox, setIsPearlBox, isCredit, setIsCredit, isCosmic, setIsCosmic, isWorkDefault, setIsWorkDefault}}>
+        <Context.Provider value={{isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,  orientation, isPearlBox, setIsPearlBox, isCredit, setIsCredit, isCosmic, setIsCosmic, isWorkDefault, setIsWorkDefault, vertical, horizontal}}>
             {children}
         </Context.Provider>
     )
