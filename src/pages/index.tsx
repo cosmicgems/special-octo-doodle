@@ -520,7 +520,7 @@ export default function Home() {
     >
         <div className='w-full'>
           <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
-            Hover or Tap&Hold, I&apos;m Interactive!
+            Hover or Tap&Hold, I&apos;m Interactive! 
           </Typography>
         </div></motion.div>
         <motion.div 
