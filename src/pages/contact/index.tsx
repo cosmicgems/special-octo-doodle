@@ -66,7 +66,7 @@ const ContactPage = () => {
               animate={{opacity:1, y:0}}
               transition={{duration: 0.75, delay: 0.75}}
               >
-              <TextField className='mb-4' fullWidth label="Name" type='text' variant='outlined' value={name} onChange={(e)=>setName(e.target.value)} />              
+              <TextField className='mb-4' fullWidth label="Name"  variant='outlined' value={name} onChange={(e)=>setName(e.target.value)} />              
             </motion.div>
             <motion.div
               initial={{opacity:0, y:-100}}
