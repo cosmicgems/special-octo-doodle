@@ -3,15 +3,51 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { TextField, TextareaAutosize } from '@mui/material'
+import { CircularProgress, TextField, TextareaAutosize } from '@mui/material'
 
 const ContactPage = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // State to track form submission
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true); // Start submitting
 
+    const formData = {
+      name,
+      email,
+      message,
+      phone,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Form submitted successfully');
+        setName('');
+        setEmail('');
+        setMessage('');
+        setPhone('');
+      } else {
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false); // Finished submitting
+    }
+  };
 
   return (
     <div className="mb-12 sm:mt-24" >
@@ -24,36 +60,63 @@ const ContactPage = () => {
         </motion.div>
         
         <div >
-          <form className=''>
+          <form onSubmit={handleSubmit} className=''>
             <motion.div
               initial={{opacity:0, y:-100}}
               animate={{opacity:1, y:0}}
               transition={{duration: 0.75, delay: 0.75}}
               >
-              <TextField className='mb-4' fullWidth label="Name" variant='outlined' value={name} onChange={(e)=>setName(e.target.value)} />              
+              <TextField className='mb-4' fullWidth label="Name" type='text' variant='outlined' value={name} onChange={(e)=>setName(e.target.value)} />              
             </motion.div>
             <motion.div
               initial={{opacity:0, y:-100}}
               animate={{opacity:1, y:0}}
               transition={{duration: 0.75, delay: 0.95}}
               >
-              <TextField className='mb-4' fullWidth label="Email" variant='outlined' value={email} onChange={(e)=>setEmail(e.target.value)} />              
+              <TextField className='mb-4' fullWidth label="Phone" type='text' variant='outlined' value={phone} onChange={(e)=>setPhone(e.target.value)} />              
             </motion.div>
             <motion.div
               initial={{opacity:0, y:-100}}
               animate={{opacity:1, y:0}}
               transition={{duration: 0.75, delay: 1.15}}
               >
-              <TextField multiline rows={4} className='mb-4' fullWidth label="Message" variant='outlined' value={message} onChange={(e)=>setMessage(e.target.value)} />              
+              <TextField className='mb-4' fullWidth label="Email" type='email' variant='outlined' value={email} onChange={(e)=>setEmail(e.target.value)} />              
             </motion.div>
             <motion.div
-              className='px-[33%]' style={{width:'100%'}}
-              initial={{opacity:0, scale:.25}}
-              animate={{ opacity:1, scale: 1 }}
-              transition={{ ease: "easeOut", duration: .75, delay:1.35}}
-            >
-              <Button sx={{width:'100%', fontFamily: 'rajdhani'}} variant='contained' type='submit'>Send</Button>               
+              initial={{opacity:0, y:-100}}
+              animate={{opacity:1, y:0}}
+              transition={{duration: 0.75, delay: 1.35}}
+              >
+              <TextField multiline rows={4} className='mb-4' fullWidth label="Message" variant='outlined' value={message} onChange={(e)=>setMessage(e.target.value)} />              
             </motion.div>
+            {isSubmitting ? (
+              <>
+              <div 
+                    className='px-[33%] w-[100%]'>
+                <Button sx={{width:'100%', fontFamily: 'rajdhani'}} variant='contained' type='submit'><CircularProgress sx={{ }} /></Button>
+              </div>
+               
+                              
+              </>
+
+                ) : (
+                  <motion.div
+                    className='px-[33%]'
+                    style={{ width: '100%' }}
+                    initial={{ opacity: 0, scale: 0.25 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ ease: 'easeOut', duration: 0.75, delay: 1.35 }}
+                  >
+                    <Button
+                      sx={{ width: '100%', fontFamily: 'rajdhani' }}
+                      variant='contained'
+                      type='submit'
+                    >
+                      Send
+                    </Button>
+                  </motion.div>
+            )}
+            
           </form>
         </div>
 
