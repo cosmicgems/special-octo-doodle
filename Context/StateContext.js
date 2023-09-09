@@ -17,6 +17,9 @@ export const StateContext =({ children }) => {
     const [orientation, setOrientation] = useState(null);
     const [horizontal, setHorizontal] = useState(false);
     const [vertical, setVertical] = useState(false);
+    const [maliek, setMaliek] =useState(false);
+    const [color, setColor] = useState(false);
+    const [hovered, setHovered] = useState(false);
     
   
 
@@ -51,7 +54,36 @@ export const StateContext =({ children }) => {
 
 
     return (
-        <Context.Provider value={{isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,  orientation, isPearlBox, setIsPearlBox, isCredit, setIsCredit, isCosmic, setIsCosmic, isWorkDefault, setIsWorkDefault, vertical, horizontal}}>
+        <Context.Provider 
+        value={
+          {
+            isAboutHoriBg, 
+            isAboutVertBg, 
+            isWorkHoriBg, 
+            isWorkVertBg, 
+            setIsWorkHoriBg, 
+            setIsWorkVertBg, 
+            setIsAboutHoriBg, 
+            setIsAboutVertBg,  
+            orientation, 
+            isPearlBox, 
+            setIsPearlBox, 
+            isCredit, 
+            setIsCredit, 
+            isCosmic, 
+            setIsCosmic, 
+            isWorkDefault, 
+            setIsWorkDefault, 
+            vertical, 
+            horizontal,
+            maliek,
+            setMaliek,
+            hovered,
+            setHovered,
+            color,
+            setColor,
+            }
+          }>
             {children}
         </Context.Provider>
     )
