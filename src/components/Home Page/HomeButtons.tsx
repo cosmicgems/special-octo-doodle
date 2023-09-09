@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from "framer-motion"
 import { useStateContext } from '../../../Context/StateContext'
 import Link from 'next/link';
@@ -9,6 +9,8 @@ import { useRouter } from 'next/router';
 const HomeButtons = () => {
     let timer:any
     const [holdTime, setHoldTime] = useState<number>(0);
+
+
 
     const {  
             setIsWorkHoriBg, 
@@ -66,24 +68,21 @@ const HomeButtons = () => {
         }
     
     const handleTouchStart = (button:string) => {
-        const startTime = Date.now();
-    
-        timer = setInterval(() => {
-            const elapsedTime = Date.now() - startTime;
-                setHoldTime(elapsedTime);
-            }, 100); 
+                    
+        setHovered(hovered);
+        setColor(true); 
+        handleBackground(button); 
         
-        handleTap(button);
     }
+
+
     
-    function handleTouchEnd() {
-        setTimeout(()=> {
-            clearInterval(timer); // Clear the interval/timer.
-            setHoldTime(0); 
-            setHovered(!hovered);
-            setColor(!color); 
-            handleBackground("");           
-        }, 1000)
+    function handleTouchEnd(button:any) {
+    
+        // setHovered(!hovered);
+        // setColor(!color); 
+        // handleBackground("");           
+        
 
     }
 
@@ -144,8 +143,8 @@ const HomeButtons = () => {
                                         
                                             <Button   
                                             onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
-                                            onTouchStart={ vertical ? () => handleTouchStart("work") : null}
-                                            onTouchEnd={vertical ? handleTouchEnd : null}
+                                            onTouchStart={ vertical ? () => handleTouchStart("professional") : null}
+                                            onTouchEnd={vertical ? () => handleTouchEnd("professional") : null}
                                             variant='contained' sx={{fontFamily: 'rajdhani',}}>
                                                 My Work
                                             </Button>
@@ -156,9 +155,10 @@ const HomeButtons = () => {
                                         >
                                         
                                             <Button 
+                                            
                                             onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
                                             onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
-                                            onTouchEnd={vertical ? handleTouchEnd : null}
+                                            onTouchEnd={vertical ? () => handleTouchEnd("personal") : null}
                                             variant='outlined' 
                                             sx={{fontFamily: 'kodchasan', borderColor: grey[50], color: grey[50]}}>
                                                 About Me
@@ -197,8 +197,8 @@ const HomeButtons = () => {
                                 
                                     <Button  
                                     onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
-                                    onTouchStart={ vertical ? () => handleTouchStart("work") : null}
-                                    onTouchEnd={vertical ? handleTouchEnd : null}
+                                    onTouchStart={ vertical ? () => handleTouchStart("professional") : null}
+                                    onTouchEnd={vertical ? () => handleTouchEnd("professional") : null}
                                     variant='contained' 
                                     sx={{fontFamily: 'rajdhani'}}>
                                         My Work
@@ -212,7 +212,7 @@ const HomeButtons = () => {
                                     <Button 
                                     onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
                                     onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
-                                    onTouchEnd={vertical ? handleTouchEnd : null}
+                                    onTouchEnd={vertical ? () => handleTouchEnd("personal") : null}
                                     variant='outlined' 
                                     sx={{fontFamily: 'kodchasan'}}>
                                         About Me
