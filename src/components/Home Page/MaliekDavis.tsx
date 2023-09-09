@@ -64,15 +64,11 @@ const MaliekDavis = () => {
         setTapTimer(
             setTimeout(()=> {
                 handleBackground('maliek'); 
-                setHovered(true); 
-                setMaliek(true)
+                setHovered(!hovered); 
+                setMaliek(!hovered)
             }, 500)
         );
 
-    }
-
-    const handleTouchEnd = () => {
-        clearTimeout(tapTimer);
     }
 
     return (
@@ -101,7 +97,6 @@ const MaliekDavis = () => {
                                     onHoverEnd={horizontal ? () => {setHovered(false); setMaliek(false)} : null}  onMouseEnter={horizontal ? () => {handleBackground('maliek');setHovered(true); setMaliek(true)} : null} 
                                     style={{fontFamily: 'kodchasan', fontWeight:700}}
                                     onTouchStart={vertical ? handleTouchStart : null}
-                                    onTouchEnd={vertical ? handleTouchEnd : null}
                                     >
                                     Maliek Davis
                                 </motion.span>
@@ -124,7 +119,7 @@ const MaliekDavis = () => {
                         onMouseEnter={horizontal ? () => {handleBackground('maliek'); setHovered(true); setMaliek(true)} : null} 
                         style={{fontFamily: 'kodchasan', fontWeight:700}}
                         onTouchStart={vertical ? handleTouchStart : null}
-                        onTouchEnd={vertical ? handleTouchEnd : null}>
+                        >
                             Maliek Davis
                     </motion.span>
                 </Typography> 
