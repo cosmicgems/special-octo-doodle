@@ -17,6 +17,16 @@
   -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
     inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
+.scrollable-container {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px; /* Adjust as needed */
+}
+
+.scrollable-item {
+  scroll-snap-align: center;
+}
+
 
 body{
   width: 100%;

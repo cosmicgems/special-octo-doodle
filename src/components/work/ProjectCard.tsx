@@ -66,7 +66,7 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
   }
 
   return (
-    <Card sx={{ minWidth: {xs:345, sm:450}, minHeight: {sm:575} }}>
+    <Card className='' sx={{ width: {xs:345, sm:450}, minHeight: {xs:400 ,sm:575} }}>
       <CardActionArea>
         <CardMedia
           component="img"
