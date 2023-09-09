@@ -127,7 +127,7 @@ const AboutPage = () => {
 
 
   return (
-    <>
+    <div className='flex flex-col h-full justify-center items-center'>
     <div className="video-container">
 
     {hovered && isProfessional && !vertical ? (
@@ -319,7 +319,7 @@ const AboutPage = () => {
 
         </div>      
       </div>    
-    </>
+    </div>
 
 
   )

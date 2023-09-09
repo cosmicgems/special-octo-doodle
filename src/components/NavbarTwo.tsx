@@ -181,9 +181,15 @@ export default function NavbarTwo() {
             <Divider />
       
         </Drawer>
-        <Main open={open}>
-            <DrawerHeader />
-        </Main>
+        {
+            open ?
+            <Main open={open}>
+                <DrawerHeader />
+            </Main>
+            :
+            ""
+        }
+
         </Box>
     );
 }

@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
     <>
       <div className=' flex flex-col h-screen ' style={{overflowY: 'hidden'}}>
         <NavbarTwo/>
-        <main className='grow overflow-y-auto'>{children}</main>
+        <main className='grow overflow-y-hidden overflow-x-hidden'>{children}</main>
       <Footer/> 
       </div>   
     </>

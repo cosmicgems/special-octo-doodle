@@ -27,9 +27,10 @@ export default function Home() {
       }
 
     <main
-      className={`flex  flex-col items-center md:justify-center h-max mb-5  px-4 md:px-14 lg:px-24 lg:mt-24   ${inter.className}`}
+      className={` flex  flex-col items-center md:justify-center  mb-5  px-4 md:px-14 lg:px-24 lg:mt-24 h-full   ${inter.className}`}
       style={{fontFamily: 'rajdhani'}}
     >
+      
 
         <MaliekDavis />
 

@@ -20,6 +20,9 @@ export const StateContext =({ children }) => {
     const [maliek, setMaliek] =useState(false);
     const [color, setColor] = useState(false);
     const [hovered, setHovered] = useState(false);
+    const [isIphone, setIsIphone] = useState(false);
+    const [isTshirt, setIsTshirt] = useState(false);
+    const [isEcommerce, setIsEcommerce] = useState(false);
     
   
 
@@ -82,6 +85,12 @@ export const StateContext =({ children }) => {
             setHovered,
             color,
             setColor,
+            isIphone,
+            setIsIphone,
+            isTshirt,
+            setIsTshirt,
+            isEcommerce, 
+            setIsEcommerce,
             }
           }>
             {children}
