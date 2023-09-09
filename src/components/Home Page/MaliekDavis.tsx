@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion"
 import { Typography } from '@mui/material'
 import { blue, red } from '@mui/material/colors'
 import { useStateContext } from '../../../Context/StateContext'
 
-const MaliekDavis = () => {  
-    const {  setIsWorkHoriBg, setIsWorkVertBg, setIsAboutHoriBg, setIsAboutVertBg,isAboutHoriBg, isAboutVertBg, isWorkHoriBg, isWorkVertBg, orientation, maliek, setMaliek, hovered, setHovered, } = useStateContext();
+const MaliekDavis = () => {
+    const [tapTimer, setTapTimer] = useState<any>(null);  
+    
+    const {  
+            setIsWorkHoriBg, 
+            setIsWorkVertBg, 
+            setIsAboutHoriBg, 
+            setIsAboutVertBg,
+            isAboutHoriBg, 
+            isAboutVertBg, 
+            isWorkHoriBg, 
+            isWorkVertBg, 
+            orientation, 
+            maliek, 
+            setMaliek, 
+            hovered, 
+            setHovered, 
+            vertical, 
+            horizontal 
+        } = useStateContext();
         
     const handleBackground = (theme:string) => {
     if(theme === 'professional'){
@@ -42,6 +60,21 @@ const MaliekDavis = () => {
 
     }
 
+    const handleTouchStart = () => {
+        setTapTimer(
+            setTimeout(()=> {
+                handleBackground('maliek'); 
+                setHovered(true); 
+                setMaliek(true)
+            }, 500)
+        );
+
+    }
+
+    const handleTouchEnd = () => {
+        clearTimeout(tapTimer);
+    }
+
     return (
         <>
         {
@@ -63,13 +96,13 @@ const MaliekDavis = () => {
                                 textShadow: '2px 2px #fff', 
                                 fontSize: {xs: '5rem'}}} 
                             className=' sm:text-center'>
-                                Hello, I&apos;m &nbsp;
+                                Hello, I&apos;m&nbsp;
                                 <motion.span 
-                                    onHoverEnd={() => {setHovered(false); setMaliek(false)}}  onMouseEnter={() => {
-                                            handleBackground('maliek');
-                                            setHovered(true); setMaliek(true)  // Set hover status to true
-                                        }} 
-                                    style={{fontFamily: 'kodchasan', fontWeight:700}}>
+                                    onHoverEnd={horizontal ? () => {setHovered(false); setMaliek(false)} : null}  onMouseEnter={horizontal ? () => {handleBackground('maliek');setHovered(true); setMaliek(true)} : null} 
+                                    style={{fontFamily: 'kodchasan', fontWeight:700}}
+                                    onTouchStart={vertical ? handleTouchStart : null}
+                                    onTouchEnd={vertical ? handleTouchEnd : null}
+                                    >
                                     Maliek Davis
                                 </motion.span>
                             </Typography>
@@ -85,11 +118,13 @@ const MaliekDavis = () => {
                 transition={{duration: 1}}
                 >
                 <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
-                    Hello, I&apos;m &nbsp;
+                    Hello, I&apos;m&nbsp;
                     <motion.span 
-                        onHoverEnd={() => {setHovered(false); setMaliek(false)}}  
-                        onMouseEnter={() => {handleBackground('maliek'); setHovered(true); setMaliek(true)}} 
-                        style={{fontFamily: 'kodchasan', fontWeight:700}}>
+                        onHoverEnd={horizontal ? () => {setHovered(false); setMaliek(false)} : null}  
+                        onMouseEnter={horizontal ? () => {handleBackground('maliek'); setHovered(true); setMaliek(true)} : null} 
+                        style={{fontFamily: 'kodchasan', fontWeight:700}}
+                        onTouchStart={vertical ? handleTouchStart : null}
+                        onTouchEnd={vertical ? handleTouchEnd : null}>
                             Maliek Davis
                     </motion.span>
                 </Typography> 
