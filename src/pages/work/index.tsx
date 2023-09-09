@@ -192,6 +192,9 @@ const WorkPage = () => {
 
         
         <main className='flex flex-col  w-screen  h-content pb-24  ' style={{ fontFamily: 'rajdhani',    }}>
+
+                    {/* mobile project card mapping */}
+
           <div className='sm:hidden flex  px-10   items-center gap-24 ' style={{}}>
             {projects.map((project: any, i) => {
               if (i === 0) {
@@ -237,6 +240,37 @@ const WorkPage = () => {
 
             })}
           </div>
+
+                    {/* Desktop top project car mapping */}
+
+          <div className='hidden sm:flex sm:flex-row gap-3 sm:gap-24 justify-center items-center w-[10%]' style={{ paddingInlineStart: '100vw',  overflowX: 'auto'}}>
+              {projects.map((project:any, i) => {
+                return <motion.div
+                  className='mb-3 pr-6'
+                  key={project.id}
+                  initial={{opacity:0, scale:.25}}
+                  animate={{
+                    opacity: hovered && hoveredProject === project.title ? 1 : 0.25,
+                    scale:  1}}
+                  transition={{ ease: "easeOut", duration: 1 }} 
+                  onMouseEnter={() => {
+                    handleBackground(project.title);
+                    setHoveredProject(project.title);
+                    setHovered(true); 
+                    setColor(true);  
+                  }}
+                  onHoverEnd={() => {
+                    handleBackground("")
+                    setHovered(false); 
+                    setColor(false); 
+                    setHoveredProject(null);}}  
+                >
+                  <ProjectCard project={project} />
+                </motion.div>
+                
+                
+              })}
+            </div>   
         </main>    
       </div>    
     </>
