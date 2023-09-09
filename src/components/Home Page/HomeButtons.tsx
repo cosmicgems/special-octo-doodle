@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion"
 import { useStateContext } from '../../../Context/StateContext'
 import Link from 'next/link';
 import { Button, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import { useRouter } from 'next/router';
 
 const HomeButtons = () => {
+    let timer:any
+    const [holdTime, setHoldTime] = useState<number>(0);
 
     const {  
             setIsWorkHoriBg, 
@@ -20,9 +23,13 @@ const HomeButtons = () => {
             maliek, 
             hovered, 
             setHovered,
-            setColor
+            color,
+            setColor,
+            vertical, 
+            horizontal
         } = useStateContext();
-
+    
+    const router = useRouter();
                 
     const handleBackground = (theme:string) => {
         if(theme === 'professional'){
@@ -49,15 +56,61 @@ const HomeButtons = () => {
             setIsWorkVertBg(false);
             setIsAboutHoriBg(false);
             } 
-            }else if(theme === 'maliek'){
+        }else if(theme === 'maliek' || theme === "" ){
             setIsWorkHoriBg(false);
             setIsAboutVertBg(false);
             setIsWorkVertBg(false);
             setIsAboutHoriBg(false);
-            }
-        console.log(isWorkHoriBg);
+        }
     
         }
+    
+    const handleTouchStart = (button:string) => {
+        const startTime = Date.now();
+    
+        timer = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+                setHoldTime(elapsedTime);
+            }, 100); 
+        
+        handleTap(button);
+    }
+    
+    function handleTouchEnd() {
+        setTimeout(()=> {
+            clearInterval(timer); // Clear the interval/timer.
+            setHoldTime(0); 
+            setHovered(!hovered);
+            setColor(!color); 
+            handleBackground("");           
+        }, 1000)
+
+    }
+
+    const handleTap = (button:string) => {
+        if(button === "work"){
+            if(holdTime >= 1000){
+                handleBackground('professional');
+                setHovered(true); 
+                setColor(true); 
+            } else {
+                setHovered(false); 
+                setColor(false);
+                router.push("/work")
+            }            
+        } else if (button === "personal") {
+            if(holdTime >= 1000){
+                handleBackground('personal');
+                setHovered(true); 
+                setColor(true); 
+            } else {
+                setHovered(false); 
+                setColor(false);
+                router.push("/about")
+            } 
+        }
+
+    }
 
     return (
         <>
@@ -86,28 +139,31 @@ const HomeButtons = () => {
                                     transition={{ duration: 1, delay:1 }}
                                     >
                                         <div
-                                        onMouseOut={() => {setHovered(false); setColor(false)}}  
+                                        onMouseOut={horizontal ? () => {setHovered(false); setColor(false)} : null}  
                                         >
-                                        <Link href="/work">
-                                            <Button  onMouseEnter={() => {
-                                                handleBackground('professional');
-                                                setHovered(true); setColor(true) // Set hover status to true
-                                            }}
+                                        
+                                            <Button   
+                                            onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
+                                            onTouchStart={ vertical ? () => handleTouchStart("work") : null}
+                                            onTouchEnd={vertical ? handleTouchEnd : null}
                                             variant='contained' sx={{fontFamily: 'rajdhani',}}>
                                                 My Work
                                             </Button>
-                                        </Link>
+                                        
                                         </div>
                                         <div
-                                        onMouseOut={() => {setHovered(false); setColor(false)}}
+                                        onMouseOut={horizontal ? () => {setHovered(false); setColor(false)} : null}
                                         >
-                                        <Link href="/about">
-                                            <Button onMouseEnter={() => { handleBackground('personal'); setHovered(true); setColor(true)}} 
+                                        
+                                            <Button 
+                                            onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
+                                            onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
+                                            onTouchEnd={vertical ? handleTouchEnd : null}
                                             variant='outlined' 
                                             sx={{fontFamily: 'kodchasan', borderColor: grey[50], color: grey[50]}}>
                                                 About Me
                                             </Button>
-                                        </Link>
+                                        
                                         </div>
                                     </motion.div>      
                                 </>
@@ -136,27 +192,32 @@ const HomeButtons = () => {
                         transition={{ ease: "easeOut", duration: .75, delay:1 }}
                         >
                             <motion.div
-                            onHoverEnd={() => {setHovered(false); setColor(false)}}  
+                            onHoverEnd={horizontal ? () => {setHovered(false); setColor(false)} : null}  
                             >
-                                <Link href="/work">
-                                    <Button  onMouseEnter={() => {
-                                        handleBackground('professional');
-                                        setHovered(true); setColor(true) 
-                                    }}
+                                
+                                    <Button  
+                                    onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
+                                    onTouchStart={ vertical ? () => handleTouchStart("work") : null}
+                                    onTouchEnd={vertical ? handleTouchEnd : null}
                                     variant='contained' 
                                     sx={{fontFamily: 'rajdhani'}}>
                                         My Work
                                     </Button>
-                                </Link>
+                            
                             </motion.div>
                             <motion.div
-                            onHoverEnd={() => {setHovered(false); setColor(false)}}
+                            onHoverEnd={horizontal ? () => {setHovered(false); setColor(false)} : null }
                             >
-                                <Link href="/about">
-                                    <Button onMouseEnter={() => {handleBackground('personal');setHovered(true); setColor(true) }} variant='outlined' sx={{fontFamily: 'kodchasan'}}>
+                                
+                                    <Button 
+                                    onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
+                                    onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
+                                    onTouchEnd={vertical ? handleTouchEnd : null}
+                                    variant='outlined' 
+                                    sx={{fontFamily: 'kodchasan'}}>
                                         About Me
                                     </Button>
-                                </Link>
+                                
                             </motion.div>
                         </motion.div>             
                     </>

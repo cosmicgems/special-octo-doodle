@@ -66,9 +66,8 @@ const MaliekDavis = () => {
                 handleBackground('maliek'); 
                 setHovered(!hovered); 
                 setMaliek(!hovered)
-            }, 500)
+            }, 1)
         );
-
     }
 
     return (
