@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 const HomeButtons = () => {
     let timer:any
     const [holdTime, setHoldTime] = useState<number>(0);
+    const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
 
 
 
@@ -67,24 +68,48 @@ const HomeButtons = () => {
     
         }
     
-    const handleTouchStart = (button:string) => {
-                    
-        setHovered(hovered);
-        setColor(true); 
-        handleBackground(button); 
+
+
+    const handleTouchStart = (button:string) => {  
         
+        const startTime = Date.now();
+
+        let timer = setInterval(() => {
+            const elapsedTime = Date.now() - startTime;
+            setHoldTime(elapsedTime);
+        }, 100);
+
+        setTimerId(timer);
+
     }
 
+    const handleTouchEnd = (button:string) => {
+        // Clear the timer by using the timerId from state
+        clearInterval(timerId);
+        console.log(holdTime);
 
-    
-    function handleTouchEnd(button:any) {
-    
-        // setHovered(!hovered);
-        // setColor(!color); 
-        // handleBackground("");           
+        if(holdTime >= 1000){
+            setHovered(!hovered);
+            setColor(!color); 
+            const background = (button != "") ? button : ""
+            handleBackground(background);
+            setHoldTime(0)            
+        } else if (holdTime < 1000) {
+            setHovered(false);
+            setColor(false);
+            handleBackground(""); 
+            let route:string 
+            if( button === "professional" ){
+                route = "work"
+            } else if ( button === "personal" ) {
+                route = "about"
+            }
+            router.push(`/${route}`)
+        }       
+
         
 
-    }
+    };
 
     const handleTap = (button:string) => {
         if(button === "work"){
@@ -195,6 +220,7 @@ const HomeButtons = () => {
                             onHoverEnd={horizontal ? () => {setHovered(false); setColor(false)} : null}  
                             >
                                 
+
                                     <Button  
                                     onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
                                     onTouchStart={ vertical ? () => handleTouchStart("professional") : null}
