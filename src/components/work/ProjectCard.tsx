@@ -13,7 +13,7 @@ import CircularProgress, {
 } from '@mui/material/CircularProgress';
 import { motion, AnimatePresence } from 'framer-motion'
 
-const ProjectCard = ({project: { title, image, gif, subHeader, description, descriptionMobile, url, techStack}}) => {
+const ProjectCard = ({project: { title, image, gif, subHeader, description, descriptionMobile, url, techStack},}) => {
   
   const [isDescription, setIsDescription] = useState(true)
   const [isGif, setIsGif] = useState(false)
@@ -66,81 +66,89 @@ const ProjectCard = ({project: { title, image, gif, subHeader, description, desc
   }
 
   return (
-    <Card className='' sx={{ width: {xs:345, sm:450}, minHeight: {xs:400 ,sm:575} }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          src={image}
-          alt={`${title} home page screenshot`}
-        />
-        <CardContent>
-          <Link href={url} >
-            <Typography className='text-center' gutterBottom variant="h5" component="div" sx={{width: "100%", fontFamily:'kodchasan'}}>
-              {title}
-            </Typography>          
-          </Link>
-          {isDescription &&
-            <>
-              <div className='hidden md:block ' >
-                <Typography  variant="body2" color="text" sx={{fontFamily:'rajdhani',}}>
-                      {descriptionMobile}
-                </Typography>
-              </div>
-              <div className='sm:hidden  '>
-                <Typography  variant="body2" color="text.secondary" sx={{fontFamily:'rajdhani'}}>
-                      {descriptionMobile}
-                </Typography>
-              </div>            
-            </>
-          }
-          {isTechStack &&
+    <motion.div >
+      <Card 
+          // onTouchEnd={()=> {
+          //   console.log(title); }}  
+            className='' sx={{ width: {xs:345, sm:450}, minHeight: {xs:400 ,sm:575} }}>
+        <CardActionArea>
+          <CardMedia
+          // onTouchEnd={()=> {
+          //   console.log(title); }}
+            component="img"
+            src={image}
+            alt={`${title} home page screenshot`}
+          />
+          <CardContent>
+            <Link href={url} >
+              <Typography className='text-center' gutterBottom variant="h5" component="div" sx={{width: "100%", fontFamily:'kodchasan'}}>
+                {title}
+              </Typography>          
+            </Link>
+            {isDescription &&
+              <>
+                <div className='hidden md:block ' >
+                  <Typography  variant="body2" color="text" sx={{fontFamily:'rajdhani',}}>
+                        {descriptionMobile}
+                  </Typography>
+                </div>
+                <div className='sm:hidden  '>
+                  <Typography  variant="body2" color="text.secondary" sx={{fontFamily:'rajdhani'}}>
+                        {descriptionMobile}
+                  </Typography>
+                </div>            
+              </>
+            }
+            {isTechStack &&
+              
+              <Stack sx={{paddingBlockStart:'2vh'}} spacing={2} direction="row" justifyContent="center"  alignItems='center'>
+                {techStack.map((tech, i) => {
+                  const {name, percentage, css} = tech;
+                  return <Box key={i}>
+                        <Typography variant='body1' component='div' className='font-bold' sx={css}>{name}</Typography>
+                    <Stack  sx={css}>
+                        <CircularProgressWithLabel value={percentage} sx={css} />      
+                    </Stack>
+                  </Box>
+                })}
+              </Stack>
             
-            <Stack sx={{paddingBlockStart:'2vh'}} spacing={2} direction="row" justifyContent="center"  alignItems='center'>
-              {techStack.map((tech, i) => {
-                const {name, percentage, css} = tech;
-                return <Box key={i}>
-                      <Typography variant='body1' component='div' className='font-bold' sx={css}>{name}</Typography>
-                  <Stack  sx={css}>
-                      <CircularProgressWithLabel value={percentage} sx={css} />      
-                  </Stack>
-                </Box>
-              })}
-            </Stack>
-           
-          }
-          {isGif &&
-                        <video autoPlay muted loop
-                        className="w-full h-auto" 
-                        style={{ maxWidth: "100%", height: "auto" }}>
-                        <source src={gif} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-          }
+            }
+            {isGif &&
+                          <video autoPlay muted loop
+                          className="w-full h-auto" 
+                          style={{ maxWidth: "100%", height: "auto" }}>
+                          <source src={gif} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+            }
 
 
-        </CardContent>
-      </CardActionArea>
-      <CardActions className='justify-center items-center gap-3'>
-        <Button onClick={handleIsDescription} className={` ${isDescription ? "hidden": ""}`} size="small" color="primary" variant='contained' 
-        sx={{
-          bgcolor: red[900] ,fontFamily:'rajdhani'
-        }}>
-          Info
-        </Button>
-        <Button onClick={handleIsDemo} className={` ${isGif ? "hidden": ""}`} size="small" color="primary" variant='contained' 
-        sx={{
-          bgcolor: red[900] ,fontFamily:'rajdhani'
-        }}>
-          Demo
-        </Button>
-        <Button onClick={handleIsTechStack} className={` ${isTechStack ? "hidden": ""}`} size="small" color="primary" variant='contained' 
-        sx={{
-          bgcolor: blue[900] ,fontFamily:'rajdhani'
-        }}>
-          Tech Stack
-        </Button>
-      </CardActions>
-    </Card>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className='justify-center items-center gap-3'>
+          <Button onClick={handleIsDescription} className={` ${isDescription ? "hidden": ""}`} size="small" color="primary" variant='contained' 
+          sx={{
+            bgcolor: red[900] ,fontFamily:'rajdhani'
+          }}>
+            Info
+          </Button>
+          <Button onClick={handleIsDemo} className={` ${isGif ? "hidden": ""}`} size="small" color="primary" variant='contained' 
+          sx={{
+            bgcolor: red[900] ,fontFamily:'rajdhani'
+          }}>
+            Demo
+          </Button>
+          <Button onClick={handleIsTechStack} className={` ${isTechStack ? "hidden": ""}`} size="small" color="primary" variant='contained' 
+          sx={{
+            bgcolor: blue[900] ,fontFamily:'rajdhani'
+          }}>
+            Tech Stack
+          </Button>
+        </CardActions>
+      </Card>      
+    </motion.div>
+
   )
 }
 

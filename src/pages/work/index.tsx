@@ -115,6 +115,8 @@ const WorkPage = () => {
     };
 
   }, []);
+
+
   return (
     <>
     <div className='flex justify-center items-center'>
@@ -175,7 +177,7 @@ const WorkPage = () => {
                 animate={{opacity:1}}
                 transition={{duration: 0.75}} className="overlay"></motion.div>
                 </>:
-            vertical &&!hovered ? (
+            vertical && !hovered ? (
               
           <>
           <CardMedia
@@ -200,6 +202,20 @@ const WorkPage = () => {
               if (i === 0) {
                 return (
                   <motion.div
+                    
+                  onTouchEnd={()=> {
+                    if(hovered){
+                      handleBackground("")
+                      setHovered(false); 
+                      setColor(false); 
+                      setHoveredProject(null);
+                      return
+                    }
+                    handleBackground(project.title);
+                    setHoveredProject(project.title);
+                    setHovered(true); 
+                    setColor(true);  
+                  }}
                     className='scrollable-item'
                     id={project.id}
                     key={project.id}
@@ -214,6 +230,19 @@ const WorkPage = () => {
                 return (
                   <motion.div
                     className='scrollable-item pr-10'
+                    onTouchEnd={()=> {
+                      if(hovered){
+                        handleBackground("")
+                        setHovered(false); 
+                        setColor(false); 
+                        setHoveredProject(null);
+                        return
+                      }
+                      handleBackground(project.title);
+                      setHoveredProject(project.title);
+                      setHovered(true); 
+                      setColor(true);  
+                    }}
                     id={project.id}
                     key={project.id}
                     initial={{ opacity: 0, scale: 0.25 }}
@@ -226,6 +255,19 @@ const WorkPage = () => {
               } else{
               return (
                 <motion.div
+                onTouchEnd={()=> {
+                  if(hovered){
+                    handleBackground("")
+                    setHovered(false); 
+                    setColor(false); 
+                    setHoveredProject(null);
+                    return
+                  }
+                  handleBackground(project.title);
+                  setHoveredProject(project.title);
+                  setHovered(true); 
+                  setColor(true);  
+                }}
                   className=' scrollable-item'
                   id={project.id}
                   key={project.id}
