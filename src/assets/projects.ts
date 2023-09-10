@@ -138,7 +138,7 @@ export const projects: Project[] = [
     {
         id: 8197491880986,
         title: 'ThreeJS T-Shirt Studio',
-        image: '/images/credit.png',
+        image: '/images/tshirt-studio.png',
         gif: '/backgrounds/tshirt-studio-mobile.gif',
         videoLandscape: "/backgrounds/tshirt-studio.mp4",
         subHeader: "ThreeJS && ReactJS ? Powering Retail : ' ' ",
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     {
         id: 819749188014,
         title: 'Apple iPhone Clone',
-        image: '/images/credit.png',
+        image: '/images/iphone.png',
         gif: '/backgrounds/iphone.gif',
         videoLandscape: "/backgrounds/iphone.mp4",
         subHeader: "Unlocking the Power of ThreeJS at Work",
@@ -220,7 +220,7 @@ export const projects: Project[] = [
     {
         id: 819749182424,
         title: 'Pearl Shop : E-Commerce',
-        image: '/images/credit.png',
+        image: '/images/e-commerce.png',
         gif: '/backgrounds/e-commerce.gif',
         videoLandscape: "/backgrounds/e-commerce.mp4",
         subHeader: "Pearl Shop - Pay W/Stripe!",
@@ -230,7 +230,7 @@ export const projects: Project[] = [
             },
         ],
         descriptionMobile: "Explore the Pearl Shop – a technical marvel crafted with JavaScript and Next.js. This cutting-edge e-commerce site seamlessly integrates Stripe for secure transactions and leverages Three.js for an immersive digital experience. Content management made simple with Sanity, ensuring a seamless journey for every shopper.",
-        url: "https://expert-succotash.vercel.app/",
+        url: "https://pearl-shop.vercel.app/",
         techStack: [
             {
                 name: 'JavaScript',
