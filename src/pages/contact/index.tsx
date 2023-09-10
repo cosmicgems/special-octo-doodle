@@ -50,7 +50,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className=" sm:mt-24" >
+    <div className=" mt-20 pt-12 sm:pt-0 sm:mt-24" >
       <div className={`flex flex-col gap-3 items-center justify-center px-4 md:px-14 lg:px-24  `}>
       <motion.div
         initial={{opacity:0, y:-100}}

@@ -89,9 +89,10 @@ const HomeButtons = () => {
         console.log(holdTime);
 
         if(holdTime >= 1000){
-            setHovered(!hovered);
-            setColor(!color); 
+            setHovered(true);
+            setColor(true); 
             const background = (button != "") ? button : ""
+            
             handleBackground(background);
             setHoldTime(0)            
         } else if (holdTime < 1000) {
@@ -144,18 +145,37 @@ const HomeButtons = () => {
                         {
                             isWorkHoriBg || isWorkVertBg || isAboutHoriBg || isAboutVertBg || maliek ?
                                 <>
-                                    <motion.div 
-                                    className='items-center justify-center gap-3'
-                                    initial={{opacity:0, scale:.25}}
-                                    animate={{ opacity:1, scale: [1] }}
-                                    transition={{ ease: "easeOut", duration: .75, delay:1 }}
-                                    >
-                                    <div className='w-full'>
-                                        <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
-                                        Hover or Tap&Hold, I&apos;m Interactive! 
-                                        </Typography>
-                                    </div>
-                                    </motion.div>
+                                    {
+                                        vertical ?
+                                            <motion.div 
+                                            className='items-center justify-center gap-3'
+                                            initial={{opacity:0, scale:.25}}
+                                            animate={{ opacity:1, scale: [1] }}
+                                            transition={{ ease: "easeOut", duration: .75, delay:1 }}
+                                            >
+                                                <div className='w-full'>
+                                                <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
+                                                    Tap & Hold, I&apos;m Interactive! 
+                                                </Typography>
+                                                </div>
+                                            </motion.div>                            
+                                        :
+                                        horizontal ?
+                                            <motion.div 
+                                            className='items-center justify-center gap-3'
+                                            initial={{opacity:0, scale:.25}}
+                                            animate={{ opacity:1, scale: [1] }}
+                                            transition={{ ease: "easeOut", duration: .75, delay:1 }}
+                                            >
+                                                <div className='w-full'>
+                                                <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
+                                                    Hover I&apos;m Interactive! 
+                                                </Typography>
+                                                </div>
+                                            </motion.div>
+                                        : 
+                                        null
+                                    }
                                     <motion.div 
                                     className='flex flex-row items-center justify-center gap-3'
                                     initial={{opacity:0.1}}
@@ -198,18 +218,38 @@ const HomeButtons = () => {
                     </>
                     :
                     <>
-                        <motion.div 
-                        className='items-center justify-center gap-3'
-                        initial={{opacity:0, scale:.25}}
-                        animate={{ opacity:1, scale: [1] }}
-                        transition={{ ease: "easeOut", duration: .75, delay:1 }}
-                        >
-                            <div className='w-full'>
-                            <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
-                                Hover or Tap&Hold, I&apos;m Interactive! 
-                            </Typography>
-                            </div>
-                        </motion.div>
+                        {
+                            vertical ?
+                                <motion.div 
+                                className='items-center justify-center gap-3'
+                                initial={{opacity:0, scale:.25}}
+                                animate={{ opacity:1, scale: [1] }}
+                                transition={{ ease: "easeOut", duration: .75, delay:1 }}
+                                >
+                                    <div className='w-full'>
+                                    <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
+                                        Tap & Hold, I&apos;m Interactive! 
+                                    </Typography>
+                                    </div>
+                                </motion.div>                            
+                            :
+                            horizontal ?
+                                <motion.div 
+                                className='items-center justify-center gap-3'
+                                initial={{opacity:0, scale:.25}}
+                                animate={{ opacity:1, scale: [1] }}
+                                transition={{ ease: "easeOut", duration: .75, delay:1 }}
+                                >
+                                    <div className='w-full'>
+                                    <Typography variant='h6' component='div' sx={{width:'100%', fontFamily: 'kodchasan', color: grey[500]}} className='mb-1'>
+                                        Hover I&apos;m Interactive! 
+                                    </Typography>
+                                    </div>
+                                </motion.div>
+                            : 
+                            null
+                        }
+
                         <motion.div 
                         className='flex flex-row items-center justify-center gap-3'
                         initial={{opacity:0, scale:.25}}
