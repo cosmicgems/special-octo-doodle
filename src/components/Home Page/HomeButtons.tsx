@@ -112,30 +112,6 @@ const HomeButtons = () => {
 
     };
 
-    const handleTap = (button:string) => {
-        if(button === "work"){
-            if(holdTime >= 1000){
-                handleBackground('professional');
-                setHovered(true); 
-                setColor(true); 
-            } else {
-                setHovered(false); 
-                setColor(false);
-                router.push("/work")
-            }            
-        } else if (button === "personal") {
-            if(holdTime >= 1000){
-                handleBackground('personal');
-                setHovered(true); 
-                setColor(true); 
-            } else {
-                setHovered(false); 
-                setColor(false);
-                router.push("/about")
-            } 
-        }
-
-    }
 
     return (
         <>
