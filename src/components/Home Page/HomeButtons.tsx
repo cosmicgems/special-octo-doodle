@@ -88,14 +88,14 @@ const HomeButtons = () => {
         clearInterval(timerId);
         console.log(holdTime);
 
-        if(holdTime >= 1000){
+        if(holdTime >= 500){
             setHovered(true);
             setColor(true); 
             const background = (button != "") ? button : ""
             
             handleBackground(background);
             setHoldTime(0)            
-        } else if (holdTime < 1000) {
+        } else if (holdTime < 500) {
             setHovered(false);
             setColor(false);
             handleBackground(""); 
