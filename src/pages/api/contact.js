@@ -81,16 +81,17 @@ export default async function handleData(req, res) {
 
       const msg = {
         to: EMAIL_TO, // Change this to the recipient's email address
-        from: 'maliek.davis@pearlbox.co',
+        from: 'maliekjdavis24@gmail.com',
         subject: 'Looks Like Someone Wants to Work w/You!',
         text: `You have received a new message from ${name}.\n\nPhone Number: ${phone}\n\nEmail: ${email}\n\nMessage: ${message}`,
       };
+      console.log(msg);
 
-      await sgMail.send(msg);
-
+      const messageSent =  await sgMail.send(msg);
+      console.log(messageSent);
       
 
-      res.status(200).json({ message: 'Data stored and notification sent successfully.' });
+      res.status(200).json({ message: 'Data stored and notification sent successfully.' }, messageSent);
     } catch (error) {
       console.error('Error:', error);
       res.status(500).json({ message: 'An error occurred while handling the data.' });

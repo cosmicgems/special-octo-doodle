@@ -186,7 +186,8 @@ const HomeButtons = () => {
                                         onMouseOut={horizontal ? () => {setHovered(false); setColor(false)} : null}  
                                         >
                                         
-                                            <Button   
+                                            <Button 
+                                            onClick={horizontal ? ()=> {router.push("/work")} : null }
                                             onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
                                             onTouchStart={ vertical ? () => handleTouchStart("professional") : null}
                                             onTouchEnd={vertical ? () => handleTouchEnd("professional") : null}
@@ -200,7 +201,7 @@ const HomeButtons = () => {
                                         >
                                         
                                             <Button 
-                                            
+                                            onClick={horizontal ? ()=> {router.push("/about")} : null }
                                             onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
                                             onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
                                             onTouchEnd={vertical ? () => handleTouchEnd("personal") : null}
@@ -261,7 +262,8 @@ const HomeButtons = () => {
                             >
                                 
 
-                                    <Button  
+                                    <Button
+                                    onClick={horizontal ? ()=> {router.push("/work")} : null }  
                                     onMouseEnter={ horizontal ?() => {handleBackground('professional');setHovered(true); setColor(true)} : null}
                                     onTouchStart={ vertical ? () => handleTouchStart("professional") : null}
                                     onTouchEnd={vertical ? () => handleTouchEnd("professional") : null}
@@ -275,7 +277,8 @@ const HomeButtons = () => {
                             onHoverEnd={horizontal ? () => {setHovered(false); setColor(false)} : null }
                             >
                                 
-                                    <Button 
+                                    <Button
+                                    onClick={horizontal ? ()=> {router.push("/about")} : null }
                                     onMouseEnter={horizontal ? () => {handleBackground('personal');setHovered(true); setColor(true) } : null} 
                                     onTouchStart={ vertical ? () => handleTouchStart("personal") : null}
                                     onTouchEnd={vertical ? () => handleTouchEnd("personal") : null}

@@ -139,7 +139,7 @@ export const projects: Project[] = [
         id: 8197491880986,
         title: 'ThreeJS T-Shirt Studio',
         image: '/images/tshirt-studio.png',
-        gif: '/backgrounds/tshirt-studio-mobile.gif',
+        gif: '/backgrounds/tshirt-studio-mobile.mp4',
         videoLandscape: "/backgrounds/tshirt-studio.mp4",
         subHeader: "ThreeJS && ReactJS ? Powering Retail : ' ' ",
         description: [
@@ -180,7 +180,7 @@ export const projects: Project[] = [
         id: 819749188014,
         title: 'Apple iPhone Clone',
         image: '/images/iphone.png',
-        gif: '/backgrounds/iphone.gif',
+        gif: '/backgrounds/iphone.mp4',
         videoLandscape: "/backgrounds/iphone.mp4",
         subHeader: "Unlocking the Power of ThreeJS at Work",
         description: [
@@ -221,7 +221,7 @@ export const projects: Project[] = [
         id: 819749182424,
         title: 'Pearl Shop : E-Commerce',
         image: '/images/e-commerce.png',
-        gif: '/backgrounds/e-commerce.gif',
+        gif: '/backgrounds/e-commerce.mp4',
         videoLandscape: "/backgrounds/e-commerce.mp4",
         subHeader: "Pearl Shop - Pay W/Stripe!",
         description: [

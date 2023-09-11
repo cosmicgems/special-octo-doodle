@@ -140,7 +140,7 @@ const WorkPage = () => {
     </div>
 
 
-      <div className='sm:flex sm:flex-col h-[70vh] sm:justify-center sm:items-center mt-6 sm:mt-3 overflow-x-auto overflow-y-auto scrollable-container'>
+      <div className='sm:flex sm:flex-col h-[70vh] sm:justify-center sm:items-center mt-6 sm:mt-3 overflow-x-auto sm:overflow-x-hidden overflow-y-auto  scrollable-container'>
       
           
 
@@ -193,7 +193,7 @@ const WorkPage = () => {
         }
 
         
-        <main className='flex flex-col  w-screen  h-content pb-24  ' style={{ fontFamily: 'rajdhani',    }}>
+        <main className='flex flex-col  w-screen  h-content pb-24 sm:pb-6 sm:px-6' style={{ fontFamily: 'rajdhani',    }}>
 
                     {/* mobile project card mapping */}
 
@@ -285,7 +285,7 @@ const WorkPage = () => {
 
                     {/* Desktop top project car mapping */}
 
-          <div className='hidden sm:flex sm:flex-row gap-3 sm:gap-24 justify-center items-center w-[10%]' style={{ paddingInlineStart: '100vw',  overflowX: 'auto'}}>
+          <div className='hidden sm:flex sm:flex-row gap-3 sm:gap-24 justify-center items-center w-[10%] ' style={{ paddingInlineStart: '100vw',  overflowX: 'auto'}}>
               {projects.map((project:any, i) => {
                 return <motion.div
                   className='mb-3 pr-6'
@@ -312,7 +312,8 @@ const WorkPage = () => {
                 
                 
               })}
-            </div>   
+            </div>
+              
         </main>    
       </div>    
     </>
