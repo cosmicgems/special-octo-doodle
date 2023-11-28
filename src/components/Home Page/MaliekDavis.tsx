@@ -89,7 +89,7 @@ const MaliekDavis = () => {
                             sx={{fontFamily: 'rajdhani', 
                                 color: isWorkHoriBg || isWorkVertBg ? blue[500] : isAboutHoriBg || isAboutVertBg || maliek ? red[600] : "", 
                                 textShadow: '2px 2px #fff', 
-                                fontSize: {xs: '5rem'}}} 
+                                fontSize: {xs: '4rem', md: "5rem"}}} 
                             className=' sm:text-center'>
                                 Hello, I&apos;m&nbsp;
                                 <motion.span 
@@ -111,7 +111,7 @@ const MaliekDavis = () => {
                 animate={{opacity:1, y:0, scale: 1}}
                 transition={{duration: 1}}
                 >
-                <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '5rem'}}} className=' sm:text-center'>
+                <Typography component='div' variant='h1' sx={{fontFamily: 'rajdhani', fontSize: {xs: '4rem', md:"5rem"}}} className=' sm:text-center'>
                     Hello, I&apos;m&nbsp;
                     <motion.span 
                         onHoverEnd={horizontal ? () => {setHovered(false); setMaliek(false)} : null}  

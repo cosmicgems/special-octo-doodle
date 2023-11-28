@@ -86,3 +86,137 @@ body{
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75); /* Black with 25% opacity */
 }
+
+/* Nasser Project CSS */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.scrollable-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 2px; /* Adjust as needed */
+}
+
+.scrollable-item {
+  scroll-snap-align: center;
+}
+
+.navbar-component {
+  background-color: rgba(0, 0, 0, 0.5);
+  ;
+}
+/* background-image: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%); */
+
+.gradient-text {
+  font-weight: bold;
+  background: #a8edea;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,  #1e1b4b 0%, #c7d2fe 100%);  /* Chrome 10-25, Safari 5.1-6 */
+  background-image: linear-gradient(to right,  #1e1b4b 0%, #c7d2fe 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 400% 600%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientAnimation 5s linear infinite;
+}
+
+.gradient-button {
+  font-weight: bold;
+  background: #1e1b4b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,  #1e1b4b 0%, #c7d2fe 100%);  /* Chrome 10-25, Safari 5.1-6 */
+  background-image: linear-gradient(to right,  #1e1b4b 0%, #c7d2fe 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: 400% 600%;
+  animation: gradientAnimation 5s linear infinite;
+}
+
+.footer-component {
+  background-color: #c7d2fe;
+  bottom: 0;
+}
+
+.card-wrapper {
+  box-shadow: 2px 3px 5px 1px #1e1b4b;
+}
+
+
+
+.background-container {
+  z-index: -20;
+  background-image: url('../assets/images/background.jpeg');
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+}
+
+.home-component {
+  background-color: #1e1b4b;
+  color: #000;
+}
+
+.business-card {
+  background-color: #c7d2fe;
+  box-shadow: 2px 3px 5px 1px #000;
+}
+
+.challenge-component {
+  background-color: #c7d2fe;
+}
+
+.solutions-component {
+  background-color: #f3f4f6;
+}
+
+.deliverables-component {
+  background-color: #c7d2fe;
+}
+
+.timeline-component {
+  background-color: #1e1b4b;
+}
+
+.quote-component {
+  background-color: #c7d2fe;
+}
+
+.quote-card-component {
+  background-color: #1e1b4b;
+  box-shadow: 2px 3px 5px 1px #000;
+}
+
+.document-component {
+  background-color: #f3f4f6;
+  box-shadow: 2px 3px 5px 1px #000;
+}
+
+.deliverable-card {
+  background-color: #f3f4f6;
+}
+.card-component {
+  background-color: #c7d2fe;
+}
+.esign-component {
+  background-color: #f3f4f6;
+}
+
+@media screen and (max-width: 768px) {
+  .background-container {
+     
+      background-image: url('../assets/images/mobile-background.jpeg');
+  }
+  .card-wrapper {
+      box-shadow: 1px 2px 5px 1px #1e1b4b;
+  }
+  .home-component {
+      color: #c7d2fe;
+  }
+}

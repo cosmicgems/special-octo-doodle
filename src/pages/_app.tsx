@@ -25,13 +25,13 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   return (
     <CacheProvider value={emotionCache}>
         <CssBaseline />
-      <ThemeProvider theme={lightTheme}>
+      {/* <ThemeProvider theme={lightTheme}> */}
         <StateContext>
-          <Layout>
+          {/* <Layout> */}
             <Component {...pageProps} />
-          </Layout>
+          {/* </Layout> */}
         </StateContext>
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </CacheProvider>
   );
 };

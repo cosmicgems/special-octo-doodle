@@ -6,6 +6,7 @@ import { projects } from '../../assets/projects'
 import { useStateContext } from '../../../Context/StateContext'
 import { CardMedia, Typography } from '@mui/material'
 import { blue, grey } from '@mui/material/colors'
+import Layout from '../../components/Layout'
 
 const WorkPage = () => {
   
@@ -118,7 +119,7 @@ const WorkPage = () => {
 
 
   return (
-    <>
+    <Layout>
     <div className='flex justify-center items-center'>
         {isPearlBox || isCosmic || isCredit || isTshirt || isIphone || isEcommerce && hovered ?
           <motion.div 
@@ -316,7 +317,7 @@ const WorkPage = () => {
               
         </main>    
       </div>    
-    </>
+    </Layout>
 
 
   )

@@ -6,6 +6,7 @@ import CollageBackground from '../components/Home Page/CollageBackground'
 import MaliekDavis from '../components/Home Page/MaliekDavis'
 import PassionateTechnologist from '../components/Home Page/PassionateTechnologist'
 import HomeButtons from '../components/Home Page/HomeButtons'
+import Layout from '../components/Layout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function Home() {
   const {horizontal, vertical, maliek, hovered,} = useStateContext();
 
   return (
-    <>
+    <Layout>
       {hovered && horizontal ?
         <> <VideoBackgroundHorizontal /> </>  : null
       }
@@ -39,6 +40,6 @@ export default function Home() {
         <HomeButtons />
 
     </main>
-    </>
+    </Layout>
   )
 }
