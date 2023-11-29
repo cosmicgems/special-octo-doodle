@@ -18,7 +18,6 @@ const clientSchema = new Schema(
             type: String,
             trim: true,
             required: true,
-            unique: true,
             lowercase: true
         }, 
         notes: {
