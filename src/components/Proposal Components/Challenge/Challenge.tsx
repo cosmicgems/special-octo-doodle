@@ -3,9 +3,9 @@ import React from 'react'
 
 const Challenge = () => {
   return (
-    <div className='challenge-component min-h-screen flex flex-col justify-center'>
-
-      <div className='px-12 flex flex-col gap-3 md:px-[33vw]'>
+    <div className='challenge-component min-h-screen flex flex-col justify-center snap-start'>
+    <div className='md:hidden challenge-overlay absolute w-screen h-screen' />
+      <div className='px-12 flex flex-col gap-3 md:px-[33vw] z-10'>
         <Typography variant='h4' className='gradient-text'>
           Challenge
         </Typography>

@@ -9,55 +9,7 @@ import { Typography } from '@mui/material';
 
 const Pages = () => {    
     
-//   const featuredTargetRef = useRef<HTMLDivElement>(null);
-//   const scrollContainerRef = useRef(null);
 
-//   useEffect(() => {
-//     const scrollContainer = featuredTargetRef.current;
-
-//     if(scrollContainer) {
-//       // Add an event listener to handle scroll snap on scroll end
-//       const handleScroll = () => {
-//       const scrollLeft = scrollContainer.scrollLeft;
-//       const containerWidth = scrollContainer.clientWidth;
-//       const featuredCards = scrollContainer.querySelectorAll('.scrollable-item');
-
-//       let nearestCard = null;
-//       let minDistance = Infinity;
-
-//       // Find the nearest project card based on scroll position
-//       featuredCards.forEach((card) => {
-//           const cardRect = card.getBoundingClientRect();
-//           const distance = Math.abs(cardRect.left - scrollLeft);
-
-//           if (distance < minDistance) {
-//           minDistance = distance;
-//           nearestCard = card;
-//           }
-//       });
-
-//       // Snap to the nearest project card
-//       if (nearestCard) {
-//           scrollContainer.scrollTo({
-//           left: nearestCard.offsetLeft || 0,
-//           behavior: 'smooth',
-//           });
-//       }
-//       };
-
-//       if (scrollContainer) {
-//       scrollContainer.addEventListener('scroll', handleScroll);
-//       }
-
-//       return () => {
-//       if (scrollContainer) {
-//           scrollContainer.removeEventListener('scroll', handleScroll);
-//       }
-//       };      
-//     }
-
-
-// }, []);
     
 const pagesRef = useRef<HTMLDivElement>(null);
 
@@ -106,6 +58,11 @@ const handleHeroNav = (direction:string) => {
             </Button>
         </div>        
       </div>
+        <div className='md:hidden flex justify-center w-full gradient-text '>
+          <Typography variant='caption' className='text-center '>
+            SCROLL FOR MORE 
+          </Typography>
+        </div>
 
     </div>
   )

@@ -9,54 +9,7 @@ import { Typography } from '@mui/material';
 
 const Features = () => {  
 
-//   const targetRef = useRef<HTMLDivElement>(null);
 
-//   useEffect(() => {
-//     const scrollContainer = targetRef.current;
-
-//     if(scrollContainer) {
-//       // Add an event listener to handle scroll snap on scroll end
-//       const handleScroll = () => {
-//       const scrollLeft = scrollContainer.scrollLeft;
-//       const containerWidth = scrollContainer.clientWidth;
-//       const featuredCards = scrollContainer.querySelectorAll('.scrollable-item');
-
-//       let nearestCard = null;
-//       let minDistance = Infinity;
-
-//       // Find the nearest project card based on scroll position
-//       featuredCards.forEach((card) => {
-//           const cardRect = card.getBoundingClientRect();
-//           const distance = Math.abs(cardRect.left - scrollLeft);
-
-//           if (distance < minDistance) {
-//           minDistance = distance;
-//           nearestCard = card;
-//           }
-//       });
-
-//       // Snap to the nearest project card
-//       if (nearestCard) {
-//           scrollContainer.scrollTo({
-//           left: nearestCard.offsetLeft || 0,
-//           behavior: 'smooth',
-//           });
-//       }
-//       };
-
-//       if (scrollContainer) {
-//       scrollContainer.addEventListener('scroll', handleScroll);
-//       }
-
-//       return () => {
-//       if (scrollContainer) {
-//           scrollContainer.removeEventListener('scroll', handleScroll);
-//       }
-//       };      
-//     }
-
-
-// }, []);
     
 const featuresRef = useRef<HTMLDivElement>(null);
 
@@ -81,7 +34,7 @@ const handleHeroNav = (direction:string) => {
       </div>
 
       <div ref={featuresRef} className='flex md:w-4/5 overflow-x-auto md:overflow-x-hidden items-center pb-6 pt-2 gap-12 snap-mandatory snap-x'>
-          <div className='hidden lg:flex absolute items-center h-[65vh]'>
+          <div className='hidden md:flex absolute items-center h-[65vh]'>
               <Button className=' mr-24' sx={{}}   onClick={() => handleHeroNav('left')}>
                 <ArrowCircleLeftRoundedIcon  sx={{fontSize: "3.5rem", color: theme.palette?.primary?.main}} />
               </Button>
@@ -97,13 +50,17 @@ const handleHeroNav = (direction:string) => {
           })
         }
         <div className='w-[24vw]'/>
-        <div className='hidden lg:flex absolute items-center h-[65vh] right-0'>
+        <div className='hidden md:flex absolute items-center h-[65vh] right-0'>
             <Button className='' sx={{}}   onClick={() => handleHeroNav('right')}>
               <ArrowCircleRightRoundedIcon  sx={{fontSize: "3.5rem", color: theme.palette?.primary?.main}} />
             </Button>
         </div>             
       </div>
-
+        <div className='md:hidden flex justify-center w-full '>
+          <Typography variant='caption' className='text-center gradient-text'>
+            SCROLL FOR MORE 
+          </Typography>
+        </div>
     </div>
   )
 }

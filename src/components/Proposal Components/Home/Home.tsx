@@ -11,12 +11,16 @@ const Home = () => {
   
   return (
     <div className='home-component min-h-screen flex md:justify-end md:items-center '>
+      <div className='md:hidden home-overlay absolute w-screen h-screen' />
       
-      <div className='w-full flex flex-col md:hidden justify-center items-center sm:hidden gap-6 pt-20 pb-6'>
+      <div className='z-10 w-full flex flex-col md:hidden justify-center items-center sm:hidden gap-6 pt-20 pb-6'>
 
         <div className=' rounded w-[85vw]  flex flex-col gap-3 justify-center items-center '>
           <Typography variant='h3' sx={{}} className='gradient-text'>
             Pearl Box 
+          </Typography>
+          <Typography variant='h5' sx={{}} className='gradient-text-home text-center'>
+            Project Nasser Law
           </Typography>
           <p>
             November 27, 2023
@@ -31,11 +35,9 @@ const Home = () => {
             Attorney Mohammed Nasser
           </Typography>
           <div className='flex gap-1 items-center'>
-            <Typography variant='body2' className='font-bold'>
-              Cell
-            </Typography>
+            <SmartphoneIcon />
             <Typography variant='body2'>
-              (586) XXX-XXXX 
+              (586) 625-3154
             </Typography>
           </div>
         </div>
@@ -48,17 +50,13 @@ const Home = () => {
             Maliek Davis
           </Typography>
           <div className='flex gap-1'>
-            <Typography variant='body2' className='font-bold'>
-              Cell
-            </Typography>
+            <SmartphoneIcon />
             <Typography variant='body2'>
               (248) 392-0942
             </Typography>
           </div>
           <div className='flex gap-1'>
-            <Typography variant='body2' className='font-bold'>
-              Email
-            </Typography>
+            <MailOutlineIcon />
             <Typography variant='body2'>
               MALIEKJDAVIS24@GMAIL.COM
             </Typography>

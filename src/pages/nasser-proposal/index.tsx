@@ -7,7 +7,12 @@ import { Deliverables } from '../../components/Proposal Components/Deliverables'
 import { Quote } from '../../components/Proposal Components/Quote'
 import { Esign } from '../../components/Proposal Components/E-Sign'
 import { Timeline } from '../../components/Proposal Components/Proposed-Schedule'
-import { Layout, Navbar } from '../../components/Proposal Components'
+import { Footer,  Navbar } from '../../components/Proposal Components'
+import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
+import { theme } from '../../styles/themes';
+
+
+const lightTheme = createTheme(theme);
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -58,46 +63,47 @@ export default function Home() {
   }
 
   return (
-    <Layout>
-      <main
-        className="main"
+    <ThemeProvider theme={lightTheme}>
+      <div
+        className="snap-y snap-mandatory overflow-y-auto min-h-screen scroll-smooth"
       >
-        <div className='background-container h-screen w-screen fixed z-0' />
+        
 
         <Navbar 
         handleRefPick={handleRefPick}
         />
 
-        <div ref={nasserRef} id="Nasser Law">
+        <div ref={nasserRef} id="Nasser Law" className="snap-start">
           <HomeComponent />        
         </div>
 
-        <div ref={challengeRef} id="Challenge">
+        <div ref={challengeRef} id="Challenge" className="snap-start">
           <Challenge />
         </div>
 
-        <div ref={solutionRef} id="Solution">
+        <div ref={solutionRef} id="Solution" className="snap-start">
           <Solution />
         </div>
 
-        <div ref={deliverablesRef} id="Deliverables">
+        <div ref={deliverablesRef} id="Deliverables" className="snap-start">
           <Deliverables />
         </div>
 
-        <div ref={timelineRef} id="Proposed Schedule">
+        <div ref={timelineRef} id="Proposed Schedule" className="snap-start">
           <Timeline />
         </div>
 
-        <div ref={quoteRef} id="Quote">
+        <div ref={quoteRef} id="Quote" className="snap-start">
           <Quote />
         </div>
 
-        <div ref={eSignRef} id="E-Sign">
+        <div ref={eSignRef} id="E-Sign" className="snap-start">
           <Esign />
         </div>
 
-      </main>      
-    </Layout>
+      </div>
+      <Footer />      
+    </ThemeProvider>
 
   )
 }

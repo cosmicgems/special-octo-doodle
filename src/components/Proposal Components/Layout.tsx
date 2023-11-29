@@ -9,19 +9,20 @@ const lightTheme = createTheme(theme);
 
 const Layout = ({children}:any) => {
   return (
-
+<ThemeProvider theme={lightTheme}>
     <div className='flex flex-col min-h-screen max-w-screen'>
 
-      <ThemeProvider theme={lightTheme}>
+      
         {/* <Navbar /> */}
-        <div className='grow w-full'>
+        <div className='grow w-full '>
             {children}            
         </div>
         
         <Footer />
-      </ThemeProvider>
+      
 
     </div>
+    </ThemeProvider>
   )
 }
 

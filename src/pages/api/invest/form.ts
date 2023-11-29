@@ -54,7 +54,7 @@ export default async function handler(
             </html>
             `;
             
-            const recipients = [email, "davis.maliek@student.oaklandcc.edu"]
+            const recipients = [email, "maliekjdavis24@gmail.com"]
             const msg = {
                 to: recipients,
                 from: 'maliekjdavis24@gmail.com',

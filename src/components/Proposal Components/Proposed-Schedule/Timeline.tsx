@@ -115,9 +115,21 @@ const Timeline = () => {
 
       <div className='flex flex-col justify-center items-center   pt-16 '>
 
-        <div className=''>
-          <Typography variant='h4' sx={{color: theme.palette?.primary?.light}} className='gradient-text' component="div">
-            Timeline
+        <div className='flex flex-col gap-2'>
+          <Typography variant='h4' sx={{color: theme.palette?.primary?.light}} className='gradient-text text-center' component="div">
+            Project Flow
+          </Typography>
+          <Typography variant='caption' sx={{color: theme.palette?.primary?.light}} className='text-center' component="div">
+            Continuous Deployment Recommended
+          </Typography>
+          <Typography variant='caption' sx={{color: theme.palette?.primary?.light}} className=' text-center' component="div">
+            Base Website : 2 Weeks
+          </Typography>
+          <Typography variant='caption' sx={{color: theme.palette?.primary?.light}} className=' text-center' component="div">
+            Blog, CMS, Client Portal, SEO : 8 Weeks
+          </Typography>
+          <Typography variant='caption' sx={{color: theme.palette?.primary?.light}} className=' text-center' component="div">
+            SEO Continuous Improvement : 3-6 Months
           </Typography>
         </div>
 
@@ -190,13 +202,14 @@ const Timeline = () => {
             </Paper>
           )}
         </Box>
-
+{/* <div className='md:hidden challenge-overlay absolute w-screen h-full z-0 ' /> */}
         <Box ref={scheduleRef} className="md:flex hidden overflow-x-hidden w-[100%] py-6  h-[70vh]" sx={{ }}>
           <div className='hidden lg:flex absolute items-center h-[65vh]'>
               <Button className='' sx={{}}   onClick={() => handleHeroNav('left')}>
                 <ArrowCircleLeftRoundedIcon  sx={{fontSize: "3.5rem", color: theme.palette?.primary?.light}} />
               </Button>
           </div>
+          
           <Stepper  connector={<CustomizedStepConnector width={100} />} className='px-20' activeStep={activeStep} >
             {proposedSchedule.map((step, index) => (
               // <div>
@@ -281,6 +294,7 @@ const Timeline = () => {
 
 
       </div>
+    
       
     </div>
   )

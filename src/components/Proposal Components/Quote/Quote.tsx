@@ -36,9 +36,12 @@ const Quote = () => {
             </div>
         
         <div className='px-6 flex flex-col gap-3'>
-          <div className='w-full mb-3'>
+          <div className='w-full mb-3 flex flex-col gap-3'>
             <Typography variant='caption' className=''>
-                Quoted price may be higher or lower. Price is contingent on added or removed features. 50% deposit to start project. Remaining balance due upon delivery of finished product and completed &quot;Final Sign-off&quot;.
+                Quoted price may be higher or lower. Price is contingent on added or removed features. Deposit required to start project. Remaining balance due upon delivery of finished product and completed &quot;Final Sign-off&quot;.
+            </Typography>
+            <Typography variant='caption' className=''>
+                This quote represents features and functionality to solve the unique challenge for increased digital presence for Nasser Law. Ensuring an easy workflow, user-friendly architecture, connectivity with clients and staff, and most importantly increased digital presence all wrapped up in a beautiful design.
             </Typography>
           </div>
           {
@@ -124,6 +127,7 @@ const Quote = () => {
 
 
 
+    {/* <div className='md:hidden challenge-overlay absolute w-screen h-screen' /> */}
     </div>
   )
 }

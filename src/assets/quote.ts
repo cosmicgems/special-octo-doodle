@@ -8,7 +8,7 @@ interface LineItem {
 
 export const quote: LineItem[] = [
     {
-        name: "Basic Website",
+        name: "Website",
         detail: "A simple, responsive website comprising essential pages like Home, About, Contact.",
         cost: 500.00,
         additional_information: "Includes design and functionality.",
@@ -17,7 +17,7 @@ export const quote: LineItem[] = [
         name: "Blog",
         detail: "Integration of a blogging platform within the website.",
         cost: 250.00,
-        additional_information: "Setup and configuration of a blog section with necessary features.",
+        additional_information: "Setup and configuration of a blog section with necessary features. *This also helps with SEO.",
     },
     {
         name: "CMS Implementation",
@@ -28,7 +28,7 @@ export const quote: LineItem[] = [
     {
         name: "Client Portal",
         detail: "Creation of a secure area for clients to access specific content.",
-        cost: 1000.00,
+        cost: 1250.00,
         additional_information: "Development of a login-based section for client-exclusive information.",
     },
     {

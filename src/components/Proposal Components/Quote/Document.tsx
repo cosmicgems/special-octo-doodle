@@ -10,7 +10,7 @@ const Document = () => {
   return (
     <div className='document-component w-[33vw] h-[42.7vw] overflow-y-auto py-6'>  
 
-        <div className='px-6 flex flex-col gap-3'>
+        <div className='px-6 flex flex-col gap-5'>
             <div className='flex justify-between mb-3'>
                 <div className='flex flex-col '>
                     <Typography variant='body1' className='font-bold' sx={{fontFamily: "Playfair Display"}}>
@@ -31,10 +31,13 @@ const Document = () => {
                
             </div>
 
-            <div className='w-full'>
+            <div className='w-full flex flex-col gap-3'>
                 <Typography variant='caption' className=''>
-                    Quoted price may be higher or lower. Price is contingent on added or removed features. 50% deposit to start project. Remaining balance due upon delivery of finished product and completed &quot;Final Sign-off&quot;.
+                    Quoted price may be higher or lower. Price is contingent on added or removed features. Deposit required to start project. Remaining balance due upon delivery of finished product and completed &quot;Final Sign-off&quot;.
                 </Typography>
+            <Typography variant='caption' className=''>
+                This quote represents features and functionality to solve the unique challenge for increased digital presence for Nasser Law. Ensuring an easy workflow, user-friendly architecture, connectivity with clients and staff, and most importantly increased digital presence all wrapped up in a beautiful design.
+            </Typography>
             </div>
 
             {
