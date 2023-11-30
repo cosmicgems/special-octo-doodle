@@ -20,7 +20,7 @@ const CommitForm = () => {
     const [date, setDate] = useState<string>(currentDate);
     const [time, setTime] = useState<string>(currentTime)
     const [sending, setSending] = useState<boolean>(false);
-    const [sent, setSent] = useState<boolean>(true);
+    const [sent, setSent] = useState<boolean>(false);
     const [success, setSuccess] = useState<any>({
         message: "",
         status: false
@@ -46,13 +46,13 @@ const CommitForm = () => {
             };
 
             const res = await axios.post("/api/invest/form", {form});
-            setSuccess({status: true, message: "Proposal submitted successfully. Notes will be analyzed for any requested feature additions or deletions."})
+            setSuccess({...success,status: true, message: "Proposal submitted successfully. Notes will be analyzed for any requested feature additions or deletions."})
             console.log(res.data);
             
 
         } catch (error) {
             setSending(!sending)
-            setError({status: true, message: "There was an error submitting your request. Please feel free to refresh and try again."})
+            setError({...error,status: true, message: "There was an error submitting your request. Please feel free to refresh and try again."})
             console.error(`Error: ${error}`)
         }
         console.log("here");

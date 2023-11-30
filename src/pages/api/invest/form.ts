@@ -14,7 +14,7 @@ export default async function handler(
             await connectDB();
             const apiKey: string = process.env.SENDGRID_API_KEY!;
             sgMail.setApiKey(apiKey);
-            console.log(process.env.SENDGRID_API_KEY);
+            // console.log(process.env.SENDGRID_API_KEY);
             console.log(req.body);
             
 
@@ -54,20 +54,29 @@ export default async function handler(
             </html>
             `;
             
-            const recipients = [email, "maliekjdavis24@gmail.com"]
+            // const recipients = [email, "maliekjdavis24@gmail.com"]
             const msg = {
-                to: recipients,
+                to: email,
                 from: 'maliekjdavis24@gmail.com',
                 subject: `Website Proposal Confirmation`,
                 html: htmlContent, 
             };
+            const copy = {
+                to: "maliekjdavis24@gmail.com",
+                from: 'maliekjdavis24@gmail.com',
+                subject: `Website Proposal Confirmation`,
+                html: htmlContent, 
+            }
     
             
     
             const messageSent = await sgMail.send(msg);
+            const messageCopySent = await sgMail.send(copy);
+            console.log(messageSent, messageCopySent);
+            
 
             
-            res.status(200).json({message: "Successful", email:msg})
+            res.status(200).json({message: "Successful", data:messageSent})
         } catch (error) {
             res.status(500).json({message: "There was an error with your registration. Please try again."})
         }
